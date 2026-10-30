@@ -21,8 +21,10 @@
     }
 
     .landing-page {
+      position: relative;
       width: 100%;
       max-width: 1600px;
+      line-height: 0;
     }
 
     .landing-page img {
@@ -30,15 +32,87 @@
       width: 100%;
       height: auto;
     }
+
+    .menu-link {
+      position: absolute;
+      top: 69.5%;
+      height: 23%;
+      display: block;
+      cursor: pointer;
+      border-radius: 18px;
+      background: transparent;
+    }
+
+    .menu-link:hover {
+      outline: 3px solid rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .menu-2025 {
+      left: 8.2%;
+      width: 20.9%;
+    }
+
+    .menu-kontak {
+      left: 29.9%;
+      width: 20%;
+    }
+
+    .menu-2026 {
+      left: 50.8%;
+      width: 20.9%;
+    }
+
+    .menu-jadwal {
+      left: 72.5%;
+      width: 20.7%;
+    }
   </style>
 </head>
 
 <body>
+
   <main class="landing-page">
+
     <img
       src="Portal Natal Kementerian Keuangan 2026 (3).png"
-      alt="Landing Page Natal Kementerian Keuangan Sumatera Utara Tahun 2026"
+      alt="Landing Page Natal Kementerian Keuangan Sumatera Utara 2026"
     >
+
+    <a class="menu-link menu-2025"
+       href="#"
+       onclick="ujiMenu('Dokumen Natal 2025'); return false;"
+       aria-label="Dokumen Natal 2025">
+    </a>
+
+    <a class="menu-link menu-kontak"
+       href="#"
+       onclick="ujiMenu('Kontak Panitia'); return false;"
+       aria-label="Kontak Panitia">
+    </a>
+
+    <a class="menu-link menu-2026"
+       href="#"
+       onclick="ujiMenu('Dokumen Natal 2026'); return false;"
+       aria-label="Dokumen Natal 2026">
+    </a>
+
+    <a class="menu-link menu-jadwal"
+       href="#"
+       onclick="ujiMenu('Jadwal Rapat'); return false;"
+       aria-label="Jadwal Rapat">
+    </a>
+
   </main>
+
+  <script>
+    function ujiMenu(namaMenu) {
+      alert(
+        "Kamu memilih: " + namaMenu +
+        "\n\nLink SharePoint akan dipasang pada tahap berikutnya."
+      );
+    }
+  </script>
+
 </body>
 </html>
