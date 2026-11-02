@@ -8,10 +8,6 @@
 <title>Natal Kementerian Keuangan Sumatera Utara 2026</title>
 
 <style>
-/* ==============================
-   1. PENGATURAN DASAR
-================================ */
-
 * {
   box-sizing: border-box;
 }
@@ -43,10 +39,7 @@ body {
   height: auto;
 }
 
-
-/* ==============================
-   2. AREA SLIDESHOW
-================================ */
+/* AREA SLIDESHOW */
 
 .slideshow {
   position: absolute;
@@ -56,76 +49,24 @@ body {
   height: 36.3%;
   overflow: hidden;
   border-radius: 1.2%;
-  background: #eee9e2;
+  background: #302720;
 }
-
-/* Foto dokumentasi */
 
 .slide-image {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center;
-  background: #eee9e2;
+  object-fit: cover;
   opacity: 0;
   transition: opacity 0.6s ease;
-  z-index: 1;
 }
 
 .slide-image.active {
   opacity: 1;
 }
 
-
-/* ==============================
-   3. INDIKATOR SLIDESHOW
-================================ */
-
-/* Lapisan ini menutupi titik bawaan desain
-   agar tidak bertumpuk dengan titik baru */
-
-.slide-indicator-area {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 15%;
-  background: rgba(35, 38, 40, 0.82);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3;
-}
-
-.slide-dots {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  padding: 0;
-  border: 1.5px solid #ffffff;
-  border-radius: 50%;
-  background: transparent;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.dot.active {
-  background: #ffffff;
-  transform: scale(1.15);
-}
-
-
-/* ==============================
-   4. TOMBOL PANAH
-================================ */
+/* TOMBOL PANAH */
 
 .slide-button {
   position: absolute;
@@ -134,7 +75,7 @@ body {
   aspect-ratio: 1;
   border: none;
   border-radius: 50%;
-  background: rgba(255,255,255,0.96);
+  background: rgba(255,255,255,0.95);
   color: #263d55;
   font-size: clamp(12px, 2vw, 25px);
   display: flex;
@@ -142,7 +83,7 @@ body {
   align-items: center;
   cursor: pointer;
   z-index: 5;
-  transition: 0.2s ease;
+  transition: 0.2s;
 }
 
 .slide-button:hover {
@@ -158,10 +99,32 @@ body {
   left: 91.6%;
 }
 
+/* PENANDA BERGERAK DI ATAS BULATAN ASLI */
 
-/* ==============================
-   5. EMPAT MENU SHAREPOINT
-================================ */
+.slide-dots {
+  position: absolute;
+  top: 59.5%;
+  left: 0;
+  width: 100%;
+  height: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.dot-marker {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: clamp(7px, 1vw, 13px);
+  height: clamp(7px, 1vw, 13px);
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid #ffffff;
+  transform: translate(-50%, -50%);
+  transition: left 0.5s ease;
+}
+
+/* EMPAT MENU SHAREPOINT */
 
 .menu-link {
   position: absolute;
@@ -200,31 +163,11 @@ body {
   width: 20.7%;
 }
 
-
-/* ==============================
-   6. TAMPILAN RESPONSIF
-================================ */
-
 @media (max-width: 600px) {
-
   .menu-link {
     border-radius: 8px;
   }
-
-  .slide-indicator-area {
-    height: 15%;
-  }
-
-  .slide-dots {
-    gap: 6px;
-  }
-
-  .dot {
-    width: 7px;
-    height: 7px;
-  }
 }
-
 </style>
 </head>
 
@@ -232,7 +175,7 @@ body {
 
 <main class="landing-page">
 
-  <!-- GAMBAR UTAMA LANDING PAGE -->
+  <!-- DESAIN UTAMA NATAL -->
 
   <img
     class="main-design"
@@ -240,37 +183,29 @@ body {
     alt="Natal Kementerian Keuangan Sumatera Utara 2026"
   >
 
-
-  <!-- SLIDESHOW DOKUMENTASI -->
+  <!-- FOTO-FOTO SLIDESHOW -->
 
   <div class="slideshow">
 
     <img
       class="slide-image active"
       src="Dokumentasi%20Natal/Foto%201.jpeg"
-      alt="Dokumentasi Natal foto 1"
+      alt="Dokumentasi kegiatan Natal foto 1"
     >
 
     <img
       class="slide-image"
       src="Dokumentasi%20Natal/Foto%202.jpeg"
-      alt="Dokumentasi Natal foto 2"
+      alt="Dokumentasi kegiatan Natal foto 2"
     >
 
     <img
       class="slide-image"
       src="Dokumentasi%20Natal/Foto%203.jpeg"
-      alt="Dokumentasi Natal foto 3"
+      alt="Dokumentasi kegiatan Natal foto 3"
     >
 
-    <!-- INDIKATOR FOTO -->
-
-    <div class="slide-indicator-area">
-      <div class="slide-dots" id="slideDots"></div>
-    </div>
-
   </div>
-
 
   <!-- TOMBOL SLIDESHOW -->
 
@@ -286,8 +221,13 @@ body {
     aria-label="Foto berikutnya"
   >›</button>
 
+  <!-- SATU PENANDA YANG BERGERAK -->
 
-  <!-- MENU DOKUMEN NATAL 2025 -->
+  <div class="slide-dots">
+    <span class="dot-marker" id="dotMarker"></span>
+  </div>
+
+  <!-- DOKUMEN NATAL 2025 -->
 
   <a
     class="menu-link menu-2025"
@@ -297,8 +237,7 @@ body {
     aria-label="Dokumen Natal 2025"
   ></a>
 
-
-  <!-- MENU KONTAK PANITIA -->
+  <!-- KONTAK PANITIA -->
 
   <a
     class="menu-link menu-kontak"
@@ -308,8 +247,7 @@ body {
     aria-label="Kontak Panitia 2026"
   ></a>
 
-
-  <!-- MENU DOKUMEN NATAL 2026 -->
+  <!-- DOKUMEN NATAL 2026 -->
 
   <a
     class="menu-link menu-2026"
@@ -319,8 +257,7 @@ body {
     aria-label="Dokumen Natal 2026"
   ></a>
 
-
-  <!-- MENU JADWAL RAPAT -->
+  <!-- JADWAL RAPAT -->
 
   <a
     class="menu-link menu-jadwal"
@@ -332,45 +269,25 @@ body {
 
 </main>
 
-
 <script>
 
-/* ==============================
-   7. SISTEM SLIDESHOW
-================================ */
+/* SISTEM SLIDESHOW */
 
 const slides = document.querySelectorAll(".slide-image");
-
-const dotsContainer = document.getElementById("slideDots");
+const marker = document.getElementById("dotMarker");
 
 let currentSlide = 0;
 let slideTimer;
 
+/* POSISI BULATAN PENANDA */
 
-/* MEMBUAT TITIK INDIKATOR */
+const markerPositions = [
+  46.5,
+  50,
+  53.5
+];
 
-slides.forEach((slide, index) => {
-
-  const dot = document.createElement("button");
-
-  dot.className = "dot";
-
-  dot.setAttribute(
-    "aria-label",
-    "Tampilkan foto " + (index + 1)
-  );
-
-  dot.addEventListener("click", () => {
-    showSlide(index);
-    restartTimer();
-  });
-
-  dotsContainer.appendChild(dot);
-
-});
-
-
-/* MENAMPILKAN FOTO */
+/* MENAMPILKAN FOTO DAN MEMINDAHKAN PENANDA */
 
 function showSlide(index) {
 
@@ -380,52 +297,41 @@ function showSlide(index) {
     slide.classList.toggle("active", i === currentSlide);
   });
 
-  document.querySelectorAll(".dot").forEach((dot, i) => {
-    dot.classList.toggle("active", i === currentSlide);
-  });
+  marker.style.left = markerPositions[currentSlide] + "%";
 
 }
 
-
-/* TOMBOL PANAH KIRI DAN KANAN */
+/* TOMBOL KIRI DAN KANAN */
 
 function changeSlide(direction) {
 
   showSlide(currentSlide + direction);
-
   restartTimer();
 
 }
-
 
 /* PERGANTIAN OTOMATIS SETIAP 5 DETIK */
 
 function startTimer() {
 
   slideTimer = setInterval(() => {
-
     showSlide(currentSlide + 1);
-
   }, 5000);
 
 }
 
-
-/* RESET TIMER */
+/* MENGULANG TIMER SETELAH TOMBOL DIKLIK */
 
 function restartTimer() {
 
   clearInterval(slideTimer);
-
   startTimer();
 
 }
 
-
 /* MULAI SLIDESHOW */
 
 showSlide(0);
-
 startTimer();
 
 </script>
