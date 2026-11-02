@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Natal Kementerian Keuangan Sumatera Utara 2026</title>
 
   <style>
@@ -11,13 +12,18 @@
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
       margin: 0;
-      min-height: 100vh;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
       background: #241c1a;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
     }
 
     .landing-page {
@@ -33,6 +39,8 @@
       height: auto;
     }
 
+    /* AREA KLIK MENU */
+
     .menu-link {
       position: absolute;
       top: 69.5%;
@@ -41,11 +49,12 @@
       cursor: pointer;
       border-radius: 18px;
       background: transparent;
+      transition: background 0.2s ease;
     }
 
     .menu-link:hover {
-      outline: 3px solid rgba(255,255,255,0.8);
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.12);
+      outline: 2px solid rgba(255,255,255,0.85);
     }
 
     .menu-2025 {
@@ -67,6 +76,14 @@
       left: 72.5%;
       width: 20.7%;
     }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 600px) {
+      .menu-link {
+        border-radius: 8px;
+      }
+    }
   </style>
 </head>
 
@@ -74,45 +91,58 @@
 
   <main class="landing-page">
 
+    <!-- GAMBAR UTAMA LANDING PAGE -->
+
     <img
-      src="Portal Natal Kementerian Keuangan 2026 (3).png"
-      alt="Landing Page Natal Kementerian Keuangan Sumatera Utara 2026"
+      src="Portal%20Natal%20Kementerian%20Keuangan%202026%20(3).png"
+      alt="Natal Kementerian Keuangan Provinsi Sumatera Utara Tahun 2026"
     >
 
-    <a class="menu-link menu-2025"
-       href="#"
-       onclick="ujiMenu('Dokumen Natal 2025'); return false;"
-       aria-label="Dokumen Natal 2025">
+    <!-- MENU DOKUMEN NATAL 2025 -->
+
+    <a
+      class="menu-link menu-2025"
+      href="https://kemenkeu.sharepoint.com/:f:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202025%20(PIC%20BC)?d=w3260b0952d4d415597d765fe60072ab9&csf=1&web=1&e=eofxs4"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Buka Dokumen Natal 2025"
+      title="Dokumen Natal 2025">
     </a>
 
-    <a class="menu-link menu-kontak"
-       href="#"
-       onclick="ujiMenu('Kontak Panitia'); return false;"
-       aria-label="Kontak Panitia">
+    <!-- MENU KONTAK PANITIA -->
+
+    <a
+      class="menu-link menu-kontak"
+      href="https://kemenkeu.sharepoint.com/:x:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/_layouts/15/Doc.aspx?sourcedoc=%7B89E58E8E-062A-4C23-8F27-64D534B44660%7D&file=Susunan%20Panitia%20DJPb%20untuk%20Natal%20Tahun%202026.xlsx&action=default&mobileredirect=true&wdwpf=doclib-c"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Buka Kontak Panitia 2026"
+      title="Kontak Panitia 2026">
     </a>
 
-    <a class="menu-link menu-2026"
-       href="#"
-       onclick="ujiMenu('Dokumen Natal 2026'); return false;"
-       aria-label="Dokumen Natal 2026">
+    <!-- MENU DOKUMEN NATAL 2026 -->
+
+    <a
+      class="menu-link menu-2026"
+      href="https://kemenkeu.sharepoint.com/:f:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/Dokumen%202026?d=wa404ef763e0547a780e1fc00a59af11c&csf=1&web=1&e=re2Zgr"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Buka Dokumen Natal 2026"
+      title="Dokumen Natal 2026">
     </a>
 
-    <a class="menu-link menu-jadwal"
-       href="#"
-       onclick="ujiMenu('Jadwal Rapat'); return false;"
-       aria-label="Jadwal Rapat">
+    <!-- MENU JADWAL RAPAT -->
+
+    <a
+      class="menu-link menu-jadwal"
+      href="https://kemenkeu.sharepoint.com/:x:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/_layouts/15/Doc.aspx?sourcedoc=%7B9CACCAAA-E648-49E3-B516-C8BC8A3A08DA%7D&file=Jadwal%20Rapat%20Natal%202026.xlsx&action=default&mobileredirect=true&wdwpf=doclib-c"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Buka Jadwal Rapat"
+      title="Jadwal Rapat">
     </a>
 
   </main>
-
-  <script>
-    function ujiMenu(namaMenu) {
-      alert(
-        "Kamu memilih: " + namaMenu +
-        "\n\nLink SharePoint akan dipasang pada tahap berikutnya."
-      );
-    }
-  </script>
 
 </body>
 </html>
