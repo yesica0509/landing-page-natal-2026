@@ -2,147 +2,360 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Natal Kementerian Keuangan Sumatera Utara 2026</title>
+<title>Natal Kementerian Keuangan Sumatera Utara 2026</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100%;
-    }
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
 
-    body {
-      background: #241c1a;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-    }
+body {
+  background: #241c1a;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
 
-    .landing-page {
-      position: relative;
-      width: 100%;
-      max-width: 1600px;
-      line-height: 0;
-    }
+.landing-page {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  line-height: 0;
+}
 
-    .landing-page img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
+.main-design {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
-    /* AREA KLIK MENU */
+/* AREA SLIDESHOW */
 
-    .menu-link {
-      position: absolute;
-      top: 69.5%;
-      height: 23%;
-      display: block;
-      cursor: pointer;
-      border-radius: 18px;
-      background: transparent;
-      transition: background 0.2s ease;
-    }
+.slideshow {
+  position: absolute;
+  left: 48.1%;
+  top: 23.8%;
+  width: 46.1%;
+  height: 36.3%;
+  overflow: hidden;
+  border-radius: 1.2%;
+  background: #302720;
+}
 
-    .menu-link:hover {
-      background: rgba(255,255,255,0.12);
-      outline: 2px solid rgba(255,255,255,0.85);
-    }
+.slide-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
 
-    .menu-2025 {
-      left: 8.2%;
-      width: 20.9%;
-    }
+.slide-image.active {
+  opacity: 1;
+}
 
-    .menu-kontak {
-      left: 29.9%;
-      width: 20%;
-    }
+/* TOMBOL PANAH */
 
-    .menu-2026 {
-      left: 50.8%;
-      width: 20.9%;
-    }
+.slide-button {
+  position: absolute;
+  top: 17.5%;
+  width: 3.2%;
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  color: #263d55;
+  font-size: clamp(12px, 2vw, 25px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 5;
+  transition: 0.2s;
+}
 
-    .menu-jadwal {
-      left: 72.5%;
-      width: 20.7%;
-    }
+.slide-button:hover {
+  background: #ffffff;
+  transform: scale(1.1);
+}
 
-    /* RESPONSIVE */
+.prev-button {
+  left: 88.3%;
+}
 
-    @media (max-width: 600px) {
-      .menu-link {
-        border-radius: 8px;
-      }
-    }
-  </style>
+.next-button {
+  left: 91.6%;
+}
+
+/* INDIKATOR TITIK */
+
+.slide-dots {
+  position: absolute;
+  top: 59.5%;
+  left: 69.5%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  background: rgba(20,30,40,0.25);
+  border-radius: 20px;
+  z-index: 5;
+}
+
+.dot {
+  width: clamp(7px, 1vw, 13px);
+  height: clamp(7px, 1vw, 13px);
+  border: 1.5px solid white;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.dot.active {
+  background: white;
+}
+
+/* EMPAT MENU SHAREPOINT */
+
+.menu-link {
+  position: absolute;
+  top: 69.5%;
+  height: 23%;
+  display: block;
+  cursor: pointer;
+  border-radius: 18px;
+  background: transparent;
+  transition: background 0.2s ease;
+  z-index: 6;
+}
+
+.menu-link:hover {
+  background: rgba(255,255,255,0.12);
+  outline: 2px solid rgba(255,255,255,0.85);
+}
+
+.menu-2025 {
+  left: 8.2%;
+  width: 20.9%;
+}
+
+.menu-kontak {
+  left: 29.9%;
+  width: 20%;
+}
+
+.menu-2026 {
+  left: 50.8%;
+  width: 20.9%;
+}
+
+.menu-jadwal {
+  left: 72.5%;
+  width: 20.7%;
+}
+
+@media (max-width: 600px) {
+  .menu-link {
+    border-radius: 8px;
+  }
+
+  .slide-dots {
+    gap: 5px;
+    padding: 3px 5px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <main class="landing-page">
+<main class="landing-page">
 
-    <!-- GAMBAR UTAMA LANDING PAGE -->
+  <!-- DESAIN UTAMA NATAL -->
+
+  <img
+    class="main-design"
+    src="Portal%20Natal%20Kementerian%20Keuangan%202026%20(3).png"
+    alt="Natal Kementerian Keuangan Sumatera Utara 2026"
+  >
+
+  <!-- FOTO-FOTO SLIDESHOW -->
+
+  <div class="slideshow">
 
     <img
-      src="Portal%20Natal%20Kementerian%20Keuangan%202026%20(3).png"
-      alt="Natal Kementerian Keuangan Provinsi Sumatera Utara Tahun 2026"
+      class="slide-image active"
+      src="Dokumentasi%20Natal/Foto%201.jpeg"
+      alt="Dokumentasi kegiatan Natal foto 1"
     >
 
-    <!-- MENU DOKUMEN NATAL 2025 -->
+    <img
+      class="slide-image"
+      src="Dokumentasi%20Natal/Foto%202.jpeg"
+      alt="Dokumentasi kegiatan Natal foto 2"
+    >
 
-    <a
-      class="menu-link menu-2025"
-      href="https://kemenkeu.sharepoint.com/:f:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202025%20(PIC%20BC)?d=w3260b0952d4d415597d765fe60072ab9&csf=1&web=1&e=eofxs4"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Buka Dokumen Natal 2025"
-      title="Dokumen Natal 2025">
-    </a>
+    <img
+      class="slide-image"
+      src="Dokumentasi%20Natal/Foto%203.jpeg"
+      alt="Dokumentasi kegiatan Natal foto 3"
+    >
 
-    <!-- MENU KONTAK PANITIA -->
+  </div>
 
-    <a
-      class="menu-link menu-kontak"
-      href="https://kemenkeu.sharepoint.com/:x:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/_layouts/15/Doc.aspx?sourcedoc=%7B89E58E8E-062A-4C23-8F27-64D534B44660%7D&file=Susunan%20Panitia%20DJPb%20untuk%20Natal%20Tahun%202026.xlsx&action=default&mobileredirect=true&wdwpf=doclib-c"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Buka Kontak Panitia 2026"
-      title="Kontak Panitia 2026">
-    </a>
+  <!-- TOMBOL SLIDESHOW -->
 
-    <!-- MENU DOKUMEN NATAL 2026 -->
+  <button
+    class="slide-button prev-button"
+    onclick="changeSlide(-1)"
+    aria-label="Foto sebelumnya"
+  >‹</button>
 
-    <a
-      class="menu-link menu-2026"
-      href="https://kemenkeu.sharepoint.com/:f:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/Dokumen%202026?d=wa404ef763e0547a780e1fc00a59af11c&csf=1&web=1&e=re2Zgr"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Buka Dokumen Natal 2026"
-      title="Dokumen Natal 2026">
-    </a>
+  <button
+    class="slide-button next-button"
+    onclick="changeSlide(1)"
+    aria-label="Foto berikutnya"
+  >›</button>
 
-    <!-- MENU JADWAL RAPAT -->
+  <!-- TITIK INDIKATOR -->
 
-    <a
-      class="menu-link menu-jadwal"
-      href="https://kemenkeu.sharepoint.com/:x:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/_layouts/15/Doc.aspx?sourcedoc=%7B9CACCAAA-E648-49E3-B516-C8BC8A3A08DA%7D&file=Jadwal%20Rapat%20Natal%202026.xlsx&action=default&mobileredirect=true&wdwpf=doclib-c"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Buka Jadwal Rapat"
-      title="Jadwal Rapat">
-    </a>
+  <div class="slide-dots" id="slideDots"></div>
 
-  </main>
+  <!-- DOKUMEN NATAL 2025 -->
+
+  <a
+    class="menu-link menu-2025"
+    href="https://kemenkeu.sharepoint.com/:f:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202025%20(PIC%20BC)?d=w3260b0952d4d415597d765fe60072ab9&csf=1&web=1&e=eofxs4"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Dokumen Natal 2025"
+  ></a>
+
+  <!-- KONTAK PANITIA -->
+
+  <a
+    class="menu-link menu-kontak"
+    href="https://kemenkeu.sharepoint.com/:x:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/_layouts/15/Doc.aspx?sourcedoc=%7B89E58E8E-062A-4C23-8F27-64D534B44660%7D&file=Susunan%20Panitia%20DJPb%20untuk%20Natal%20Tahun%202026.xlsx&action=default&mobileredirect=true&wdwpf=doclib-c"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Kontak Panitia 2026"
+  ></a>
+
+  <!-- DOKUMEN NATAL 2026 -->
+
+  <a
+    class="menu-link menu-2026"
+    href="https://kemenkeu.sharepoint.com/:f:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/Dokumen%202026?d=wa404ef763e0547a780e1fc00a59af11c&csf=1&web=1&e=re2Zgr"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Dokumen Natal 2026"
+  ></a>
+
+  <!-- JADWAL RAPAT -->
+
+  <a
+    class="menu-link menu-jadwal"
+    href="https://kemenkeu.sharepoint.com/:x:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/_layouts/15/Doc.aspx?sourcedoc=%7B9CACCAAA-E648-49E3-B516-C8BC8A3A08DA%7D&file=Jadwal%20Rapat%20Natal%202026.xlsx&action=default&mobileredirect=true&wdwpf=doclib-c"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Jadwal Rapat"
+  ></a>
+
+</main>
+
+<script>
+
+/* SISTEM SLIDESHOW */
+
+const slides = document.querySelectorAll(".slide-image");
+const dotsContainer = document.getElementById("slideDots");
+
+let currentSlide = 0;
+let slideTimer;
+
+/* MEMBUAT TITIK INDIKATOR */
+
+slides.forEach((slide, index) => {
+
+  const dot = document.createElement("button");
+
+  dot.className = "dot";
+  dot.setAttribute("aria-label", "Tampilkan foto " + (index + 1));
+
+  dot.addEventListener("click", () => {
+    showSlide(index);
+    restartTimer();
+  });
+
+  dotsContainer.appendChild(dot);
+
+});
+
+/* MENAMPILKAN FOTO */
+
+function showSlide(index) {
+
+  currentSlide = (index + slides.length) % slides.length;
+
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === currentSlide);
+  });
+
+  document.querySelectorAll(".dot").forEach((dot, i) => {
+    dot.classList.toggle("active", i === currentSlide);
+  });
+
+}
+
+/* TOMBOL KIRI DAN KANAN */
+
+function changeSlide(direction) {
+
+  showSlide(currentSlide + direction);
+  restartTimer();
+
+}
+
+/* PERGANTIAN OTOMATIS SETIAP 5 DETIK */
+
+function startTimer() {
+
+  slideTimer = setInterval(() => {
+    showSlide(currentSlide + 1);
+  }, 5000);
+
+}
+
+/* MENGULANG TIMER SETELAH TOMBOL DIKLIK */
+
+function restartTimer() {
+
+  clearInterval(slideTimer);
+  startTimer();
+
+}
+
+/* MULAI SLIDESHOW */
+
+showSlide(0);
+startTimer();
+
+</script>
 
 </body>
 </html>
