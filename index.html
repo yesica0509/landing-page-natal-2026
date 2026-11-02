@@ -40,35 +40,40 @@ body {
 }
 
 /* =====================================
-   KOTAK DOKUMENTASI KEGIATAN
+   SLIDESHOW MENUTUP SELURUH KOTAK ASLI
 ===================================== */
 
 .slideshow {
   position: absolute;
-  left: 48.1%;
-  top: 11.1%;
-  width: 46.1%;
-  height: 36.3%;
+
+  /* Posisi mengikuti bingkai asli */
+  left: 48.0%;
+  top: 15.2%;
+  width: 46.5%;
+  height: 50.3%;
 
   overflow: hidden;
   border-radius: 2.1%;
   border: 2px solid rgba(255,255,255,0.95);
 
   background: #302720;
-  z-index: 3;
+  z-index: 4;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
-/* FOTO MEMENUHI SELURUH KOTAK */
+/* FOTO MEMENUHI KOTAK */
 
 .slide-image {
   position: absolute;
   inset: 0;
 
+  display: block;
   width: 100%;
   height: 100%;
 
   object-fit: cover;
-  object-position: center;
+  object-position: center center;
 
   opacity: 0;
   transition: opacity 0.7s ease;
@@ -96,8 +101,8 @@ body {
 
   padding: 0 4%;
 
-  background: rgba(255,255,255,0.82);
-  backdrop-filter: blur(5px);
+  background: rgba(255,255,255,0.86);
+  backdrop-filter: blur(6px);
 
   color: #173957;
   font-family: Arial, sans-serif;
@@ -112,7 +117,7 @@ body {
 }
 
 /* =====================================
-   TOMBOL PANAH SLIDESHOW
+   TOMBOL PANAH
 ===================================== */
 
 .slide-button {
@@ -204,7 +209,6 @@ body {
 ===================================== */
 
 @media (max-width: 600px) {
-
   .menu-link {
     border-radius: 8px;
   }
@@ -234,13 +238,9 @@ body {
     alt="Natal Kementerian Keuangan Sumatera Utara 2026"
   >
 
-  <!-- =================================
-       SLIDESHOW DOKUMENTASI
-  ================================== -->
+  <!-- SLIDESHOW DOKUMENTASI -->
 
   <div class="slideshow">
-
-    <!-- FOTO 1 -->
 
     <img
       class="slide-image active"
@@ -248,15 +248,11 @@ body {
       alt="Dokumentasi kegiatan foto 1"
     >
 
-    <!-- FOTO 2 -->
-
     <img
       class="slide-image"
       src="Dokumentasi%20Natal/Foto%202.jpeg"
       alt="Dokumentasi kegiatan foto 2"
     >
-
-    <!-- FOTO 3 -->
 
     <img
       class="slide-image"
@@ -264,14 +260,14 @@ body {
       alt="Dokumentasi kegiatan foto 3"
     >
 
-    <!-- JUDUL DOKUMENTASI -->
+    <!-- JUDUL -->
 
     <div class="slide-header">
       <span class="camera-icon">📷</span>
       <span>Dokumentasi Kegiatan</span>
     </div>
 
-    <!-- TOMBOL SEBELUMNYA -->
+    <!-- PANAH KIRI -->
 
     <button
       class="slide-button prev-button"
@@ -279,7 +275,7 @@ body {
       aria-label="Foto sebelumnya"
     >‹</button>
 
-    <!-- TOMBOL BERIKUTNYA -->
+    <!-- PANAH KANAN -->
 
     <button
       class="slide-button next-button"
@@ -289,9 +285,7 @@ body {
 
   </div>
 
-  <!-- =================================
-       MENU DOKUMEN NATAL 2025
-  ================================== -->
+  <!-- DOKUMEN NATAL 2025 -->
 
   <a
     class="menu-link menu-2025"
@@ -301,9 +295,7 @@ body {
     aria-label="Dokumen Natal 2025"
   ></a>
 
-  <!-- =================================
-       MENU KONTAK PANITIA
-  ================================== -->
+  <!-- KONTAK PANITIA -->
 
   <a
     class="menu-link menu-kontak"
@@ -313,9 +305,7 @@ body {
     aria-label="Kontak Panitia 2026"
   ></a>
 
-  <!-- =================================
-       MENU DOKUMEN NATAL 2026
-  ================================== -->
+  <!-- DOKUMEN NATAL 2026 -->
 
   <a
     class="menu-link menu-2026"
@@ -325,9 +315,7 @@ body {
     aria-label="Dokumen Natal 2026"
   ></a>
 
-  <!-- =================================
-       MENU JADWAL RAPAT
-  ================================== -->
+  <!-- JADWAL RAPAT -->
 
   <a
     class="menu-link menu-jadwal"
@@ -371,7 +359,7 @@ function changeSlide(direction) {
 
 }
 
-/* PERGANTIAN OTOMATIS SETIAP 5 DETIK */
+/* OTOMATIS SETIAP 5 DETIK */
 
 function startTimer() {
 
@@ -381,7 +369,7 @@ function startTimer() {
 
 }
 
-/* RESET TIMER SETELAH TOMBOL DIKLIK */
+/* RESET TIMER */
 
 function restartTimer() {
 
