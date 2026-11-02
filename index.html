@@ -99,29 +99,35 @@ body {
   left: 91.6%;
 }
 
-/* PENANDA BERGERAK DI ATAS BULATAN ASLI */
+/* INDIKATOR TITIK */
 
 .slide-dots {
   position: absolute;
   top: 59.5%;
-  left: 0;
-  width: 100%;
-  height: 0;
+  left: 69.5%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  background: rgba(20,30,40,0.25);
+  border-radius: 20px;
   z-index: 5;
-  pointer-events: none;
 }
 
-.dot-marker {
-  position: absolute;
-  top: 0;
-  left: 50%;
+.dot {
   width: clamp(7px, 1vw, 13px);
   height: clamp(7px, 1vw, 13px);
+  border: 1.5px solid white;
   border-radius: 50%;
-  background: #ffffff;
-  border: 1.5px solid #ffffff;
-  transform: translate(-50%, -50%);
-  transition: left 0.5s ease;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.dot.active {
+  background: white;
 }
 
 /* EMPAT MENU SHAREPOINT */
@@ -166,6 +172,11 @@ body {
 @media (max-width: 600px) {
   .menu-link {
     border-radius: 8px;
+  }
+
+  .slide-dots {
+    gap: 5px;
+    padding: 3px 5px;
   }
 }
 </style>
@@ -221,11 +232,9 @@ body {
     aria-label="Foto berikutnya"
   >›</button>
 
-  <!-- SATU PENANDA YANG BERGERAK -->
+  <!-- TITIK INDIKATOR -->
 
-  <div class="slide-dots">
-    <span class="dot-marker" id="dotMarker"></span>
-  </div>
+  <div class="slide-dots" id="slideDots"></div>
 
   <!-- DOKUMEN NATAL 2025 -->
 
@@ -274,20 +283,30 @@ body {
 /* SISTEM SLIDESHOW */
 
 const slides = document.querySelectorAll(".slide-image");
-const marker = document.getElementById("dotMarker");
+const dotsContainer = document.getElementById("slideDots");
 
 let currentSlide = 0;
 let slideTimer;
 
-/* POSISI BULATAN PENANDA */
+/* MEMBUAT TITIK INDIKATOR */
 
-const markerPositions = [
-  46.5,
-  50,
-  53.5
-];
+slides.forEach((slide, index) => {
 
-/* MENAMPILKAN FOTO DAN MEMINDAHKAN PENANDA */
+  const dot = document.createElement("button");
+
+  dot.className = "dot";
+  dot.setAttribute("aria-label", "Tampilkan foto " + (index + 1));
+
+  dot.addEventListener("click", () => {
+    showSlide(index);
+    restartTimer();
+  });
+
+  dotsContainer.appendChild(dot);
+
+});
+
+/* MENAMPILKAN FOTO */
 
 function showSlide(index) {
 
@@ -297,7 +316,9 @@ function showSlide(index) {
     slide.classList.toggle("active", i === currentSlide);
   });
 
-  marker.style.left = markerPositions[currentSlide] + "%";
+  document.querySelectorAll(".dot").forEach((dot, i) => {
+    dot.classList.toggle("active", i === currentSlide);
+  });
 
 }
 
