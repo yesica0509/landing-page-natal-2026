@@ -39,18 +39,25 @@ body {
   height: auto;
 }
 
-/* AREA SLIDESHOW */
+/* =================================
+   SLIDESHOW DOKUMENTASI KEGIATAN
+================================= */
 
 .slideshow {
   position: absolute;
   left: 48.1%;
-  top: 23.8%;
+  top: 15.3%;
   width: 46.1%;
-  height: 36.3%;
+  height: 49.5%;
   overflow: hidden;
-  border-radius: 1.2%;
+  border-radius: 2.2%;
   background: #302720;
+  border: 2px solid rgba(255,255,255,0.85);
+  z-index: 3;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
 }
+
+/* FOTO MEMENUHI SELURUH KOTAK */
 
 .slide-image {
   position: absolute;
@@ -58,79 +65,139 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.7s ease;
 }
 
 .slide-image.active {
   opacity: 1;
 }
 
-/* TOMBOL PANAH */
+/* LAPISAN JUDUL DOKUMENTASI */
+
+.slide-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 17%;
+  display: flex;
+  align-items: center;
+  padding: 0 4%;
+  gap: 10px;
+  color: #173957;
+  font-family: Arial, sans-serif;
+  font-size: clamp(11px, 1.15vw, 17px);
+  font-weight: 600;
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(5px);
+  z-index: 4;
+}
+
+.camera-icon {
+  font-size: clamp(15px, 1.6vw, 23px);
+}
+
+/* =================================
+   TOMBOL PANAH
+================================= */
 
 .slide-button {
   position: absolute;
-  top: 17.5%;
-  width: 3.2%;
-  aspect-ratio: 1;
+  top: 3.5%;
+  width: 7%;
+  height: 12%;
+  min-width: 25px;
+  min-height: 25px;
   border: none;
   border-radius: 50%;
-  background: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.96);
   color: #263d55;
-  font-size: clamp(12px, 2vw, 25px);
+  font-size: clamp(15px, 2vw, 25px);
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  z-index: 5;
+  z-index: 6;
   transition: 0.2s;
 }
 
 .slide-button:hover {
-  background: #ffffff;
-  transform: scale(1.1);
+  background: white;
+  transform: scale(1.08);
 }
 
 .prev-button {
-  left: 88.3%;
+  right: 11%;
 }
 
 .next-button {
-  left: 91.6%;
+  right: 2%;
 }
 
-/* INDIKATOR TITIK */
+/* =================================
+   INDIKATOR BULATAN BERGERAK
+================================= */
 
 .slide-dots {
   position: absolute;
-  top: 59.5%;
-  left: 69.5%;
+  bottom: 5.5%;
+  left: 50%;
   transform: translateX(-50%);
+  width: 90px;
+  height: 15px;
   display: flex;
-  gap: 9px;
   align-items: center;
-  justify-content: center;
-  padding: 4px 8px;
-  background: rgba(20,30,40,0.25);
-  border-radius: 20px;
-  z-index: 5;
+  justify-content: space-between;
+  z-index: 7;
+  pointer-events: none;
 }
 
-.dot {
-  width: clamp(7px, 1vw, 13px);
-  height: clamp(7px, 1vw, 13px);
-  border: 1.5px solid white;
+/* TIGA POSISI BULATAN */
+
+.dot-position {
+  position: absolute;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border: 1.3px solid white;
   border-radius: 50%;
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
+  background: rgba(255,255,255,0.25);
+  transform: translate(-50%, -50%);
 }
 
-.dot.active {
+.dot-position:nth-child(1) {
+  left: 10%;
+}
+
+.dot-position:nth-child(2) {
+  left: 50%;
+}
+
+.dot-position:nth-child(3) {
+  left: 90%;
+}
+
+/* BULATAN AKTIF BERGERAK */
+
+.dot-marker {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
   background: white;
+  border: 1.5px solid white;
+  transform: translate(-50%, -50%);
+  transition: left 0.5s ease;
+  box-shadow: 0 0 5px rgba(255,255,255,0.7);
 }
 
-/* EMPAT MENU SHAREPOINT */
+/* =================================
+   EMPAT MENU SHAREPOINT
+================================= */
 
 .menu-link {
   position: absolute;
@@ -169,14 +236,19 @@ body {
   width: 20.7%;
 }
 
+/* TAMPILAN LAYAR KECIL */
+
 @media (max-width: 600px) {
   .menu-link {
     border-radius: 8px;
   }
 
+  .slide-header {
+    gap: 4px;
+  }
+
   .slide-dots {
-    gap: 5px;
-    padding: 3px 5px;
+    transform: translateX(-50%) scale(0.8);
   }
 }
 </style>
@@ -194,7 +266,7 @@ body {
     alt="Natal Kementerian Keuangan Sumatera Utara 2026"
   >
 
-  <!-- FOTO-FOTO SLIDESHOW -->
+  <!-- SLIDESHOW DOKUMENTASI -->
 
   <div class="slideshow">
 
@@ -216,25 +288,37 @@ body {
       alt="Dokumentasi kegiatan Natal foto 3"
     >
 
+    <!-- JUDUL DI ATAS FOTO -->
+
+    <div class="slide-header">
+      <span class="camera-icon">📷</span>
+      <span>Dokumentasi Kegiatan</span>
+    </div>
+
+    <!-- TOMBOL PANAH -->
+
+    <button
+      class="slide-button prev-button"
+      onclick="changeSlide(-1)"
+      aria-label="Foto sebelumnya"
+    >‹</button>
+
+    <button
+      class="slide-button next-button"
+      onclick="changeSlide(1)"
+      aria-label="Foto berikutnya"
+    >›</button>
+
+    <!-- INDIKATOR SLIDESHOW -->
+
+    <div class="slide-dots" id="slideDots">
+      <span class="dot-position"></span>
+      <span class="dot-position"></span>
+      <span class="dot-position"></span>
+      <span class="dot-marker" id="dotMarker"></span>
+    </div>
+
   </div>
-
-  <!-- TOMBOL SLIDESHOW -->
-
-  <button
-    class="slide-button prev-button"
-    onclick="changeSlide(-1)"
-    aria-label="Foto sebelumnya"
-  >‹</button>
-
-  <button
-    class="slide-button next-button"
-    onclick="changeSlide(1)"
-    aria-label="Foto berikutnya"
-  >›</button>
-
-  <!-- TITIK INDIKATOR -->
-
-  <div class="slide-dots" id="slideDots"></div>
 
   <!-- DOKUMEN NATAL 2025 -->
 
@@ -280,31 +364,19 @@ body {
 
 <script>
 
-/* SISTEM SLIDESHOW */
+/* =================================
+   SISTEM SLIDESHOW
+================================= */
 
 const slides = document.querySelectorAll(".slide-image");
-const dotsContainer = document.getElementById("slideDots");
+const marker = document.getElementById("dotMarker");
 
 let currentSlide = 0;
 let slideTimer;
 
-/* MEMBUAT TITIK INDIKATOR */
+/* POSISI BULATAN AKTIF */
 
-slides.forEach((slide, index) => {
-
-  const dot = document.createElement("button");
-
-  dot.className = "dot";
-  dot.setAttribute("aria-label", "Tampilkan foto " + (index + 1));
-
-  dot.addEventListener("click", () => {
-    showSlide(index);
-    restartTimer();
-  });
-
-  dotsContainer.appendChild(dot);
-
-});
+const markerPositions = ["10%", "50%", "90%"];
 
 /* MENAMPILKAN FOTO */
 
@@ -316,9 +388,7 @@ function showSlide(index) {
     slide.classList.toggle("active", i === currentSlide);
   });
 
-  document.querySelectorAll(".dot").forEach((dot, i) => {
-    dot.classList.toggle("active", i === currentSlide);
-  });
+  marker.style.left = markerPositions[currentSlide];
 
 }
 
@@ -350,7 +420,7 @@ function restartTimer() {
 
 }
 
-/* MULAI SLIDESHOW */
+/* MULAI SLIDESHOW DARI FOTO 1 */
 
 showSlide(0);
 startTimer();
