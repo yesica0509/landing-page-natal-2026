@@ -40,7 +40,9 @@ html, body {
     object-fit: fill;
 }
 
-/* SLIDESHOW DESKTOP */
+/* =====================================
+   SLIDESHOW DESKTOP
+===================================== */
 
 .desktop-slideshow {
     position: absolute;
@@ -61,6 +63,8 @@ html, body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    opacity: 1;
+    transition: opacity 650ms ease-in-out;
 }
 
 .desktop-slide-title {
@@ -88,7 +92,7 @@ html, body {
     margin-right: 12px;
 }
 
-/* PANAH SLIDESHOW */
+/* TOMBOL PANAH DESKTOP */
 
 .slide-button {
     position: absolute;
@@ -104,12 +108,11 @@ html, body {
     justify-content: center;
     cursor: pointer;
     z-index: 5;
-    transition: background 0.2s, transform 0.2s;
+    transition: background 200ms ease, transform 200ms ease;
 }
 
 .slide-button:hover {
     background: white;
-    transform: scale(1.08);
 }
 
 .desktop-slideshow .prev {
@@ -122,7 +125,9 @@ html, body {
     right: 15px;
 }
 
-/* MENU DESKTOP */
+/* =====================================
+   MENU DESKTOP
+===================================== */
 
 .desktop-menu {
     position: absolute;
@@ -130,7 +135,11 @@ html, body {
     height: 23%;
     z-index: 10;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
+
+/* Posisi empat menu */
 
 .desktop-menu.menu-1 {
     left: 8.2%;
@@ -152,57 +161,56 @@ html, body {
     width: 20.7%;
 }
 
-
 /* =====================================
-   EFEK KLIK MENU DESKTOP DAN MOBILE
+   EFEK KILAT KHUSUS DESKTOP
 ===================================== */
 
-.desktop-menu,
-.mobile-menu {
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
-}
+/* Lapisan sorotan pada kartu */
 
-.desktop-menu::after,
-.mobile-menu::after {
+.desktop-menu::after {
     content: "";
     position: absolute;
     inset: 0;
-    border: 3px solid rgba(255,255,255,0);
+    border: 2px solid rgba(255,255,255,0);
     border-radius: 15px;
     background: rgba(255,255,255,0);
     box-shadow: 0 0 0 rgba(255,255,255,0);
     opacity: 0;
     pointer-events: none;
-    transition: none;
+    transition:
+        opacity 250ms ease,
+        background 250ms ease,
+        box-shadow 250ms ease,
+        border-color 250ms ease;
 }
 
-.desktop-menu.is-selected::after,
-.mobile-menu.is-selected::after {
+/* Menu yang sedang dipilih */
+
+.desktop-menu.is-selected::after {
     opacity: 1;
     border-color: rgba(255,255,255,0.95);
-    background: rgba(255,255,255,0.13);
+    background: rgba(255,255,255,0.15);
     box-shadow:
-        0 0 12px rgba(255,255,255,0.95),
-        0 0 25px rgba(120,190,255,0.8),
-        inset 0 0 12px rgba(255,255,255,0.55);
-    animation: menuFlash 0.18s ease-in-out;
+        0 0 9px rgba(255,255,255,0.85),
+        0 0 20px rgba(125,190,255,0.55),
+        inset 0 0 12px rgba(255,255,255,0.45);
 }
 
-@keyframes menuFlash {
+/* Efek kilat sekali saat dipilih */
+
+.desktop-menu.is-selected {
+    animation: cardFlash 350ms ease-out;
+}
+
+@keyframes cardFlash {
     0% {
-        opacity: 0;
-        transform: scale(0.97);
+        filter: brightness(1);
     }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.01);
+    45% {
+        filter: brightness(1.22);
     }
-
     100% {
-        opacity: 1;
-        transform: scale(1);
+        filter: brightness(1);
     }
 }
 
@@ -230,7 +238,9 @@ html, body {
     display: block;
 }
 
-/* SLIDESHOW MOBILE */
+/* =====================================
+   SLIDESHOW MOBILE
+===================================== */
 
 .mobile-slideshow {
     position: absolute;
@@ -286,6 +296,8 @@ html, body {
     height: 100%;
     object-fit: cover;
     display: block;
+    opacity: 1;
+    transition: opacity 650ms ease-in-out;
 }
 
 /* PANAH MOBILE */
@@ -309,7 +321,7 @@ html, body {
     right: 9px;
 }
 
-/* MENU MOBILE */
+/* MENU MOBILE - TANPA EFEK KILAT */
 
 .mobile-menu {
     position: absolute;
@@ -317,6 +329,7 @@ html, body {
     height: 14%;
     z-index: 10;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-menu.menu-1 {
@@ -341,7 +354,7 @@ html, body {
 
 
 /* =====================================
-   RESPONSIVE OTOMATIS
+   RESPONSIVE
 ===================================== */
 
 @media screen and (max-width: 700px) {
@@ -381,7 +394,7 @@ html, body {
 <body>
 
 <!-- =====================================
-     DESKTOP
+     TAMPILAN DESKTOP
 ===================================== -->
 
 <div class="desktop-page">
@@ -447,7 +460,7 @@ html, body {
 
 
 <!-- =====================================
-     MOBILE
+     TAMPILAN MOBILE
 ===================================== -->
 
 <div class="mobile-page">
@@ -457,8 +470,6 @@ html, body {
         src="Portal-Natal-Mobile.png"
         alt="Natal Kementerian Keuangan versi mobile"
     >
-
-    <!-- SLIDESHOW MOBILE -->
 
     <div class="mobile-slideshow">
 
@@ -515,7 +526,7 @@ html, body {
 
 
 <!-- =====================================
-     JAVASCRIPT SLIDESHOW OTOMATIS
+     JAVASCRIPT SLIDESHOW
 ===================================== -->
 
 <script>
@@ -527,31 +538,55 @@ const slides = [
 ];
 
 let currentSlide = 0;
-let slideTimer;
+let slideTimer = null;
 
-/* Menampilkan foto yang dipilih */
+/* Menyiapkan foto berikutnya sebelum ditampilkan */
 
-function showSlide() {
-    document.getElementById("desktopSlide").src =
-        slides[currentSlide];
+const preloadedSlides = slides.map(function(source) {
+    const image = new Image();
+    image.src = source;
+    return image;
+});
 
-    document.getElementById("mobileSlide").src =
-        slides[currentSlide];
+/* Transisi foto halus */
+
+function updateImage(elementId, source) {
+    const image = document.getElementById(elementId);
+
+    if (!image || image.src.endsWith(source)) return;
+
+    image.style.opacity = "0";
+
+    setTimeout(function() {
+        image.onload = function() {
+            image.style.opacity = "1";
+            image.onload = null;
+        };
+
+        image.src = source;
+
+        if (image.complete) {
+            image.style.opacity = "1";
+        }
+    }, 300);
 }
 
-/* Mengganti foto manual */
+function showSlide() {
+    updateImage("desktopSlide", slides[currentSlide]);
+    updateImage("mobileSlide", slides[currentSlide]);
+}
+
+/* Tombol panah manual */
 
 function changeSlide(direction) {
     currentSlide =
         (currentSlide + direction + slides.length) % slides.length;
 
     showSlide();
-
-    // Mulai ulang hitungan otomatis setelah tombol ditekan
     startSlideshow();
 }
 
-/* Slideshow otomatis setiap 5 detik */
+/* Otomatis berganti setiap 5 detik */
 
 function startSlideshow() {
     clearInterval(slideTimer);
@@ -564,35 +599,49 @@ function startSlideshow() {
     }, 5000);
 }
 
-/* Jalankan slideshow saat website dibuka */
+/* Mulai slideshow */
 
 showSlide();
 startSlideshow();
 
 
 /* =====================================
-   EFEK KILAT SAAT MENU DIKLIK
+   EFEK KLIK MENU KHUSUS LAPTOP
 ===================================== */
 
-document.querySelectorAll(".desktop-menu, .mobile-menu")
-    .forEach(function(menu) {
+const desktopMenus = document.querySelectorAll(".desktop-menu");
 
-        menu.addEventListener("click", function(event) {
+desktopMenus.forEach(function(menu) {
 
-            event.preventDefault();
+    menu.addEventListener("click", function(event) {
 
-            const destination = this.href;
+        event.preventDefault();
 
-            this.classList.add("is-selected");
+        const clickedMenu = this;
+        const destination = clickedMenu.href;
 
-            // Beri waktu agar efek kilat terlihat
-            setTimeout(function() {
-                window.location.href = destination;
-            }, 180);
+        // Jika menu yang sama diklik kembali, lepaskan sorotan
+        if (clickedMenu.classList.contains("is-selected")) {
+            clickedMenu.classList.remove("is-selected");
+            return;
+        }
 
+        // Hapus sorotan dari menu sebelumnya
+        desktopMenus.forEach(function(item) {
+            item.classList.remove("is-selected");
         });
 
+        // Tampilkan sorotan pada menu yang dipilih
+        clickedMenu.classList.add("is-selected");
+
+        // Buka SharePoint setelah animasi selesai
+        setTimeout(function() {
+            window.location.href = destination;
+        }, 400);
+
     });
+
+});
 
 </script>
 
