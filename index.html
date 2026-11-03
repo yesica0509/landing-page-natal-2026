@@ -4,15 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Natal Kementerian Keuangan Sumatera Utara 2026</title>
 
 <style>
-
-/* =====================================
-   PENGATURAN DASAR
-===================================== */
-
 * {
   box-sizing: border-box;
 }
@@ -21,7 +15,8 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -29,66 +24,50 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 }
 
 /* =====================================
-   DESAIN UTAMA
-   RASIO ASLI 1984 x 793
+   DESKTOP - DESAIN LAMA
 ===================================== */
 
-.landing-page {
+.desktop-page {
   position: relative;
-  width: min(100vw, calc(100vh * 1984 / 793));
-  aspect-ratio: 1984 / 793;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
-  flex-shrink: 0;
   line-height: 0;
 }
 
-.main-design {
+.desktop-page .main-design {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: fill;
 }
 
-/* =====================================
-   SLIDESHOW DOKUMENTASI
-===================================== */
-
-.slideshow {
+.desktop-page .slideshow {
   position: absolute;
-
   left: 47.4%;
   top: 14%;
   width: 47.4%;
   height: 52.5%;
-
   overflow: hidden;
   border-radius: 2%;
   border: 2px solid rgba(255,255,255,0.95);
-
   background: #302720;
   z-index: 4;
-
   box-shadow:
     0 8px 24px rgba(0,0,0,0.20),
     0 2px 5px rgba(0,0,0,0.12);
 }
 
-/* FOTO */
-
-.slide-image {
+.desktop-page .slide-image {
   position: absolute;
   inset: 0;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
   object-position: center center;
-
   opacity: 0;
   transition: opacity 0.8s ease;
 }
@@ -97,111 +76,69 @@ body {
   opacity: 1;
 }
 
-/* =====================================
-   JUDUL DOKUMENTASI
-===================================== */
-
-.slide-header {
+.desktop-page .slide-header {
   position: absolute;
   top: 0;
   left: 0;
-
   width: 100%;
   height: 22%;
-
   display: flex;
   align-items: center;
   gap: 10px;
-
   padding: 0 3.5%;
-
   background: linear-gradient(
     to bottom,
     rgba(15,25,35,0.48),
     rgba(15,25,35,0.12),
     transparent
   );
-
   color: #ffffff;
   font-family: Arial, sans-serif;
-  font-size: clamp(5px, 1.2vw, 18px);
+  font-size: clamp(12px, 1.2vw, 18px);
   font-weight: 700;
-
   text-shadow: 0 1px 4px rgba(0,0,0,0.65);
-
   z-index: 5;
 }
 
-.camera-icon {
-  font-size: clamp(6px, 1.5vw, 22px);
+.desktop-page .camera-icon {
+  font-size: clamp(15px, 1.5vw, 22px);
 }
 
-/* =====================================
-   TOMBOL PANAH SLIDESHOW
-===================================== */
-
-.slide-button {
+.desktop-page .slide-button {
   position: absolute;
   top: 5%;
-
   width: 6.5%;
   aspect-ratio: 1;
-
   border: 1px solid rgba(255,255,255,0.8);
   border-radius: 50%;
-
   background: rgba(255,255,255,0.90);
   color: #173957;
-
-  font-size: clamp(8px, 2vw, 26px);
-
+  font-size: clamp(17px, 2vw, 26px);
   display: flex;
   justify-content: center;
   align-items: center;
-
   cursor: pointer;
   z-index: 6;
-
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  transition: 0.25s;
 }
 
-.slide-button:hover {
-  background: #ffffff;
-  transform: scale(1.08);
-}
-
-.prev-button {
+.desktop-page .prev-button {
   right: 11%;
 }
 
-.next-button {
+.desktop-page .next-button {
   right: 2%;
 }
 
-/* =====================================
-   MENU SHAREPOINT
-===================================== */
-
 .menu-link {
   position: absolute;
-
   top: 69.5%;
   height: 23%;
-
   display: block;
   cursor: pointer;
-
   border-radius: 18px;
   background: transparent;
-
-  transition: background 0.2s ease;
   z-index: 7;
-}
-
-.menu-link:hover {
-  background: rgba(255,255,255,0.12);
-  outline: 2px solid rgba(255,255,255,0.85);
 }
 
 .menu-2025 {
@@ -224,84 +161,238 @@ body {
   width: 20.7%;
 }
 
+.menu-link:hover {
+  background: rgba(255,255,255,0.12);
+  outline: 2px solid rgba(255,255,255,0.85);
+}
+
 /* =====================================
-   PENYESUAIAN LAYAR PORTRAIT
+   MOBILE - DESAIN KHUSUS HP
+   BACKGROUND 852 x 1846
 ===================================== */
 
-@media screen and (orientation: portrait) {
+.mobile-page {
+  display: none;
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 852 / 1846;
+  height: auto;
+  overflow: hidden;
+  line-height: 0;
+  flex-shrink: 0;
+}
+
+.mobile-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+/* SLIDESHOW MOBILE */
+
+.mobile-page .slideshow {
+  position: absolute;
+  left: 3.5%;
+  top: 33.37%;
+  width: 90.4%;
+  height: 21.35%;
+  overflow: hidden;
+  border-radius: 4%;
+  z-index: 4;
+}
+
+/* FOTO MOBILE */
+
+.mobile-page .slide-image {
+  position: absolute;
+  top: 18.5%;
+  left: 0;
+  width: 100%;
+  height: 81.5%;
+  object-fit: cover;
+  object-position: center center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.mobile-page .slide-image.active {
+  opacity: 1;
+}
+
+/* HEADER MOBILE */
+
+.mobile-page .slide-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 18.5%;
+  display: flex;
+  align-items: center;
+  gap: 2%;
+  padding: 0 4%;
+  background: rgba(255,248,241,0.96);
+  color: #173957;
+  font-family: Arial, sans-serif;
+  font-size: clamp(10px, 3.5vw, 16px);
+  font-weight: 700;
+  z-index: 5;
+}
+
+.mobile-page .camera-icon {
+  font-size: clamp(12px, 4vw, 19px);
+}
+
+/* TOMBOL PANAH MOBILE */
+
+.mobile-page .slide-button {
+  position: absolute;
+  top: 2%;
+  width: 7%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255,255,255,0.8);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  color: #173957;
+  font-size: clamp(13px, 4vw, 20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 6;
+}
+
+.mobile-page .prev-button {
+  right: 17%;
+}
+
+.mobile-page .next-button {
+  right: 5%;
+}
+
+/* INDIKATOR FOTO */
+
+.mobile-dots {
+  position: absolute;
+  bottom: 2.5%;
+  left: 0;
+  width: 100%;
+  height: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2%;
+  background: rgba(30,20,20,0.25);
+  z-index: 6;
+}
+
+.mobile-dots span {
+  width: clamp(7px, 2.5vw, 12px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1.5px solid white;
+  background: transparent;
+}
+
+.mobile-dots span.active {
+  background: white;
+}
+
+/* EMPAT MENU MOBILE */
+
+.mobile-menu {
+  position: absolute;
+  display: block;
+  background: transparent;
+  z-index: 7;
+  border-radius: 5%;
+}
+
+/* BARIS PERTAMA */
+
+.mobile-menu.menu-2025 {
+  left: 3.5%;
+  top: 56.45%;
+  width: 44%;
+  height: 14%;
+}
+
+.mobile-menu.menu-kontak {
+  left: 50%;
+  top: 56.45%;
+  width: 44%;
+  height: 14%;
+}
+
+/* BARIS KEDUA */
+
+.mobile-menu.menu-2026 {
+  left: 3.5%;
+  top: 71.8%;
+  width: 44%;
+  height: 14%;
+}
+
+.mobile-menu.menu-jadwal {
+  left: 50%;
+  top: 71.8%;
+  width: 44%;
+  height: 14%;
+}
+
+/* AREA KLIK LEBIH NYAMAN */
+
+.mobile-menu:active {
+  background: rgba(255,255,255,0.12);
+}
+
+/* =====================================
+   DETEKSI LAYAR HP
+===================================== */
+
+@media screen and (max-width: 700px) {
 
   html, body {
     width: 100%;
-    height: 100%;
-    height: 100dvh;
-    overflow: hidden;
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   body {
-    justify-content: center;
-    align-items: center;
+    display: block;
+    background: #f5e8df;
   }
 
-  .landing-page {
-    width: min(
-      100vw,
-      calc(100dvh * 1984 / 793)
-    );
-
-    height: auto;
-    aspect-ratio: 1984 / 793;
-    flex-shrink: 0;
+  .desktop-page {
+    display: none;
   }
 
-  .main-design {
+  .mobile-page {
+    display: block;
     width: 100%;
-    height: 100%;
-    object-fit: fill;
-  }
-
-  .slideshow {
-    border-width: 1px;
-  }
-
-  .slide-header {
-    gap: 2px;
-    font-size: clamp(5px, 1.2vw, 12px);
-  }
-
-  .camera-icon {
-    font-size: clamp(6px, 1.5vw, 14px);
-  }
-
-  .slide-button {
-    font-size: clamp(8px, 2vw, 17px);
-  }
-
-  .menu-link {
-    border-radius: 8px;
+    max-width: 480px;
+    margin: 0 auto;
   }
 
 }
 
 /* =====================================
-   PENYESUAIAN LAYAR LANDSCAPE
+   TABLET DAN LAYAR KECIL
 ===================================== */
 
-@media screen and (orientation: landscape) {
+@media screen and (min-width: 701px) {
 
-  html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  .desktop-page {
+    display: block;
   }
 
-  .landing-page {
-    width: min(
-      100vw,
-      calc(100vh * 1984 / 793)
-    );
-
-    height: auto;
-    aspect-ratio: 1984 / 793;
+  .mobile-page {
+    display: none;
   }
 
 }
@@ -311,163 +402,193 @@ body {
 
 <body>
 
-<main class="landing-page">
+<!-- =====================================
+     VERSI DESKTOP
+===================================== -->
 
-  <!-- DESAIN UTAMA NATAL -->
+<main class="desktop-page">
 
   <img
     class="main-design"
     src="Portal%20Natal%20Kementerian%20Keuangan%202026%20(3).png"
-    alt="Natal Kementerian Keuangan Sumatera Utara 2026"
+    alt="Natal Kementerian Keuangan 2026"
   >
-
-  <!-- SLIDESHOW DOKUMENTASI -->
 
   <div class="slideshow">
 
-    <img
-      class="slide-image active"
+    <img class="slide-image active"
       src="Dokumentasi%20Natal/Foto%201.jpeg"
-      alt="Dokumentasi kegiatan foto 1"
-    >
+      alt="Dokumentasi foto 1">
 
-    <img
-      class="slide-image"
+    <img class="slide-image"
       src="Dokumentasi%20Natal/Foto%202.jpeg"
-      alt="Dokumentasi kegiatan foto 2"
-    >
+      alt="Dokumentasi foto 2">
 
-    <img
-      class="slide-image"
+    <img class="slide-image"
       src="Dokumentasi%20Natal/Foto%203.jpeg"
-      alt="Dokumentasi kegiatan foto 3"
-    >
+      alt="Dokumentasi foto 3">
 
     <div class="slide-header">
       <span class="camera-icon">📷</span>
       <span>Dokumentasi Kegiatan</span>
     </div>
 
-    <button
-      class="slide-button prev-button"
-      onclick="changeSlide(-1)"
-      aria-label="Foto sebelumnya"
-    >‹</button>
+    <button class="slide-button prev-button"
+      onclick="changeSlide(this, -1)"
+      aria-label="Foto sebelumnya">‹</button>
 
-    <button
-      class="slide-button next-button"
-      onclick="changeSlide(1)"
-      aria-label="Foto berikutnya"
-    >›</button>
+    <button class="slide-button next-button"
+      onclick="changeSlide(this, 1)"
+      aria-label="Foto berikutnya">›</button>
 
   </div>
 
-  <!-- DOKUMEN NATAL 2025 -->
-
-  <a
-    class="menu-link menu-2025"
+  <a class="menu-link menu-2025"
     href="https://kemenkeu.sharepoint.com/:f:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202025%20(PIC%20BC)?d=w3260b0952d4d415597d765fe60072ab9&csf=1&web=1&e=eofxs4"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Dokumen Natal 2025"
-  ></a>
+    target="_blank" rel="noopener noreferrer"
+    aria-label="Dokumen Natal 2025"></a>
 
-  <!-- KONTAK PANITIA -->
-
-  <a
-    class="menu-link menu-kontak"
+  <a class="menu-link menu-kontak"
     href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&newTargetListUrl=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents&viewpath=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FForms%2FList%2Easpx&id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FSusunan%20Panitia%20Natal%20Kemenkeu%20Sumut%202026%2Epdf&parent=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Kontak Panitia 2026"
-  ></a>
+    target="_blank" rel="noopener noreferrer"
+    aria-label="Kontak Panitia 2026"></a>
 
-  <!-- DOKUMEN NATAL 2026 -->
-
-  <a
-    class="menu-link menu-2026"
+  <a class="menu-link menu-2026"
     href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FUndangan%20dan%20Notula%20dan%20Detil%20Dokumen&viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&d=wa404ef763e0547a780e1fc00a59af11c&csf=1&CID=39c8dddd%2D5429%2D401b%2D8295%2Dba82dea2911d&FolderCTID=0x012000CBF6E11810F4AE479F0928ABC8E0FB35"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Dokumen Natal 2026"
-  ></a>
+    target="_blank" rel="noopener noreferrer"
+    aria-label="Dokumen Natal 2026"></a>
 
-  <!-- KERTAS KERJA PANITIA -->
-
-  <a
-    class="menu-link menu-jadwal"
+  <a class="menu-link menu-jadwal"
     href="https://kemenkeu.sharepoint.com/:x:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202026/Kertas%20Kerja%20Panitia%20DJPb%20untuk%20Natal%20Tahun%202026.xlsx?d=w89e58e8e062a4c238f2764d534b44660&csf=1&web=1&e=1vyyAu"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Kertas Kerja Panitia"
-  ></a>
+    target="_blank" rel="noopener noreferrer"
+    aria-label="Kertas Kerja Panitia"></a>
 
 </main>
+
+
+<!-- =====================================
+     VERSI MOBILE
+===================================== -->
+
+<main class="mobile-page">
+
+  <img
+    class="mobile-background"
+    src="Portal-Natal-Mobile.png"
+    alt="Natal Kementerian Keuangan Sumatera Utara 2026"
+  >
+
+  <div class="slideshow">
+
+    <img class="slide-image active"
+      src="Dokumentasi%20Natal/Foto%201.jpeg"
+      alt="Dokumentasi foto 1">
+
+    <img class="slide-image"
+      src="Dokumentasi%20Natal/Foto%202.jpeg"
+      alt="Dokumentasi foto 2">
+
+    <img class="slide-image"
+      src="Dokumentasi%20Natal/Foto%203.jpeg"
+      alt="Dokumentasi foto 3">
+
+    <div class="slide-header">
+      <span class="camera-icon">📷</span>
+      <span>Dokumentasi Kegiatan</span>
+    </div>
+
+    <button class="slide-button prev-button"
+      onclick="changeSlide(this, -1)"
+      aria-label="Foto sebelumnya">‹</button>
+
+    <button class="slide-button next-button"
+      onclick="changeSlide(this, 1)"
+      aria-label="Foto berikutnya">›</button>
+
+    <div class="mobile-dots">
+      <span class="active"></span>
+      <span></span>
+      <span></span>
+    </div>
+
+  </div>
+
+  <a class="mobile-menu menu-2025"
+    href="https://kemenkeu.sharepoint.com/:f:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202025%20(PIC%20BC)?d=w3260b0952d4d415597d765fe60072ab9&csf=1&web=1&e=eofxs4"
+    target="_blank" rel="noopener noreferrer"
+    aria-label="Dokumen Natal 2025"></a>
+
+  <a class="mobile-menu menu-kontak"
+    href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&newTargetListUrl=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents&viewpath=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FForms%2FList%2Easpx&id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FSusunan%20Panitia%20Natal%20Kemenkeu%20Sumut%202026%2Epdf&parent=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026"
+    target="_blank" rel="noopener noreferrer"
+    aria-label="Kontak Panitia 2026"></a>
+
+  <a class="mobile-menu menu-2026"
+    href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FUndangan%20dan%20Notula%20dan%20Detil%20Dokumen&viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&d=wa404ef763e0547a780e1fc00a59af11c&csf=1&CID=39c8dddd%2D5429%2D401b%2D8295%2Dba82dea2911d&FolderCTID=0x012000CBF6E11810F4AE479F0928ABC8E0FB35"
+    target="_blank" rel="noopener noreferrer"
+    aria-label="Dokumen Natal 2026"></a>
+
+  <a class="mobile-menu menu-jadwal"
+    href="https://kemenkeu.sharepoint.com/:x:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202026/Kertas%20Kerja%20Panitia%20DJPb%20untuk%20Natal%20Tahun%202026.xlsx?d=w89e58e8e062a4c238f2764d534b44660&csf=1&web=1&e=1vyyAu"
+    target="_blank" rel="noopener noreferrer"
+    aria-label="Kertas Kerja Panitia"></a>
+
+</main>
+
 
 <script>
 
 /* =====================================
-   SISTEM SLIDESHOW
+   SISTEM SLIDESHOW DESKTOP DAN MOBILE
 ===================================== */
 
-const slides = document.querySelectorAll(".slide-image");
+function initializeSlideshow(container) {
 
-let currentSlide = 0;
-let slideTimer;
+  const slides = container.querySelectorAll(".slide-image");
+  const dots = container.querySelectorAll(".mobile-dots span");
 
-/* MENAMPILKAN FOTO */
+  let currentSlide = 0;
+  let timer;
 
-function showSlide(index) {
+  function showSlide(index) {
 
-  currentSlide =
-    (index + slides.length) % slides.length;
+    currentSlide = (index + slides.length) % slides.length;
 
-  slides.forEach((slide, i) => {
-    slide.classList.toggle(
-      "active",
-      i === currentSlide
-    );
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === currentSlide);
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === currentSlide);
+    });
+
+  }
+
+  function startTimer() {
+    timer = setInterval(() => {
+      showSlide(currentSlide + 1);
+    }, 5000);
+  }
+
+  function change(direction) {
+    showSlide(currentSlide + direction);
+    clearInterval(timer);
+    startTimer();
+  }
+
+  container.querySelectorAll(".slide-button").forEach(button => {
+    button.addEventListener("click", () => {
+      const direction = button.classList.contains("next-button") ? 1 : -1;
+      change(direction);
+    });
   });
 
-}
-
-/* TOMBOL PANAH */
-
-function changeSlide(direction) {
-
-  showSlide(currentSlide + direction);
-
-  restartTimer();
-
-}
-
-/* PERGANTIAN OTOMATIS SETIAP 5 DETIK */
-
-function startTimer() {
-
-  slideTimer = setInterval(() => {
-
-    showSlide(currentSlide + 1);
-
-  }, 5000);
-
-}
-
-/* RESET TIMER */
-
-function restartTimer() {
-
-  clearInterval(slideTimer);
-
+  showSlide(0);
   startTimer();
 
 }
 
-/* MULAI DARI FOTO PERTAMA */
-
-showSlide(0);
-
-startTimer();
+document.querySelectorAll(".slideshow").forEach(initializeSlideshow);
 
 </script>
 
