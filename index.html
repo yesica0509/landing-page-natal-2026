@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Natal Kementerian Keuangan Sumatera Utara 2026</title>
 
 <style>
@@ -21,7 +20,7 @@ html, body {
 }
 
 /* =====================================
-   DESKTOP - DESAIN ASLI
+   DESKTOP - PERTAHANKAN DESAIN LAPTOP
 ===================================== */
 
 .desktop-page {
@@ -50,7 +49,7 @@ html, body {
     width: 47.4%;
     height: 52.5%;
     overflow: hidden;
-    border: 2px solid rgba(255,255,255,0.95);
+    border: 2px solid white;
     border-radius: 13px;
     box-shadow: 0 3px 12px rgba(0,0,0,0.35);
     background: #332b27;
@@ -64,15 +63,13 @@ html, body {
     object-fit: cover;
 }
 
-/* Judul dokumentasi */
-
 .desktop-slide-title {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 75px;
-    padding: 0 85px 0 28px;
+    padding: 0 150px 0 28px;
     display: flex;
     align-items: center;
     color: white;
@@ -81,7 +78,7 @@ html, body {
     text-shadow: 0 1px 4px rgba(0,0,0,0.7);
     background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.48),
         rgba(0,0,0,0)
     );
     z-index: 2;
@@ -91,24 +88,20 @@ html, body {
     margin-right: 12px;
 }
 
-/* Tombol slideshow */
-
 .slide-button {
     position: absolute;
-    top: 22px;
     width: 46px;
     height: 46px;
     border: none;
     border-radius: 50%;
     background: rgba(255,255,255,0.95);
-    color: #263b50;
+    color: #173c60;
     font-size: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     z-index: 5;
-    transition: background 0.2s;
 }
 
 .slide-button:hover {
@@ -116,14 +109,16 @@ html, body {
 }
 
 .desktop-slideshow .prev {
+    top: 22px;
     right: 80px;
 }
 
 .desktop-slideshow .next {
+    top: 22px;
     right: 15px;
 }
 
-/* Area klik menu desktop */
+/* MENU DESKTOP */
 
 .desktop-menu {
     position: absolute;
@@ -155,7 +150,7 @@ html, body {
 
 
 /* =====================================
-   MOBILE - DESAIN PORTRAIT
+   MOBILE - BACKGROUND PORTRAIT
 ===================================== */
 
 .mobile-page {
@@ -166,7 +161,7 @@ html, body {
     margin: 0 auto;
     aspect-ratio: 852 / 1846;
     overflow: hidden;
-    background: #30231f;
+    background: #f8eee7;
 }
 
 .mobile-background {
@@ -177,43 +172,89 @@ html, body {
     display: block;
 }
 
-/* Slideshow mobile */
+/* =====================================
+   SLIDESHOW MOBILE BARU
+   Menutupi kotak dokumentasi lama
+===================================== */
 
 .mobile-slideshow {
     position: absolute;
     left: 3.5%;
     top: 33.37%;
-    width: 90.4%;
-    height: 21.35%;
+    width: 93%;
+    height: 26%;
+    background: #fffaf6;
+    border: 3px solid rgba(255,255,255,0.95);
+    border-radius: 22px;
     overflow: hidden;
-    z-index: 2;
+    box-shadow: 0 7px 18px rgba(70,45,30,0.22);
+    z-index: 4;
 }
 
-.mobile-slideshow img {
+/* Header dokumentasi */
+
+.mobile-slide-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 17%;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fffaf6;
+    color: #173c60;
+    font-size: clamp(13px, 3.8vw, 18px);
+    font-weight: bold;
+    z-index: 3;
+}
+
+.mobile-camera {
+    font-size: clamp(19px, 5vw, 25px);
+}
+
+/* Foto dokumentasi */
+
+.mobile-slide-photo {
     position: absolute;
     left: 0;
-    top: 18.5%;
+    top: 17%;
     width: 100%;
-    height: 81.5%;
-    object-fit: cover;
+    height: 83%;
+    background: #ddd;
+    overflow: hidden;
 }
 
+.mobile-slide-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Tombol slideshow mobile */
+
 .mobile-slideshow .slide-button {
-    top: 23%;
-    width: 29px;
-    height: 29px;
-    font-size: 17px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px;
+    height: 34px;
+    font-size: 21px;
+    color: #173c60;
+    background: rgba(255,255,255,0.94);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 .mobile-slideshow .prev {
-    left: 5px;
+    left: 9px;
 }
 
 .mobile-slideshow .next {
-    right: 5px;
+    right: 9px;
 }
 
-/* Area klik menu mobile */
+/* MENU MOBILE */
 
 .mobile-menu {
     position: absolute;
@@ -245,11 +286,10 @@ html, body {
 
 
 /* =====================================
-   PENGATURAN RESPONSIVE OTOMATIS
+   RESPONSIVE OTOMATIS
 ===================================== */
 
 @media screen and (max-width: 700px) {
-
     html, body {
         width: 100%;
         min-height: 100%;
@@ -267,7 +307,6 @@ html, body {
 }
 
 @media screen and (min-width: 701px) {
-
     html, body {
         overflow: hidden;
     }
@@ -292,14 +331,12 @@ html, body {
 
 <div class="desktop-page">
 
-    <!-- Background desain desktop -->
     <img
         class="desktop-background"
         src="Portal%20Natal%20Kementerian%20Keuangan%202026%20(3).png"
         alt="Natal Kementerian Keuangan 2026"
     >
 
-    <!-- Dokumentasi kegiatan desktop -->
     <div class="desktop-slideshow">
 
         <img
@@ -311,6 +348,68 @@ html, body {
         <div class="desktop-slide-title">
             <span>📷</span>
             Dokumentasi Kegiatan
+        </div>
+
+        <button class="slide-button prev"
+            onclick="changeSlide(-1)"
+            aria-label="Foto sebelumnya">
+            &#8249;
+        </button>
+
+        <button class="slide-button next"
+            onclick="changeSlide(1)"
+            aria-label="Foto berikutnya">
+            &#8250;
+        </button>
+
+    </div>
+
+    <a class="desktop-menu menu-1"
+       href="https://kemenkeu.sharepoint.com/:f:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202025%20(PIC%20BC)?d=w3260b0952d4d415597d765fe60072ab9&csf=1&web=1&e=eofxs4"
+       aria-label="Dokumen Natal 2025"></a>
+
+    <a class="desktop-menu menu-2"
+       href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&newTargetListUrl=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents&viewpath=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FForms%2FList%2Easpx&id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FSusunan%20Panitia%20Natal%20Kemenkeu%20Sumut%202026%2Epdf&parent=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026"
+       aria-label="Kontak Panitia"></a>
+
+    <a class="desktop-menu menu-3"
+       href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FUndangan%20dan%20Notula%20dan%20Detil%20Dokumen&viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&d=wa404ef763e0547a780e1fc00a59af11c&csf=1&CID=39c8dddd%2D5429%2D401b%2D8295%2Dba82dea2911d&FolderCTID=0x012000CBF6E11810F4AE479F0928ABC8E0FB35"
+       aria-label="Dokumen Natal 2026"></a>
+
+    <a class="desktop-menu menu-4"
+       href="https://kemenkeu.sharepoint.com/:x:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202026/Kertas%20Kerja%20Panitia%20DJPb%20untuk%20Natal%20Tahun%202026.xlsx?d=w89e58e8e062a4c238f2764d534b44660&csf=1&web=1&e=1vyyAu"
+       aria-label="Kertas Kerja Panitia"></a>
+
+</div>
+
+
+<!-- =====================================
+     MOBILE
+===================================== -->
+
+<div class="mobile-page">
+
+    <img
+        class="mobile-background"
+        src="Portal-Natal-Mobile.png"
+        alt="Natal Kementerian Keuangan versi mobile"
+    >
+
+    <!-- KOTAK DOKUMENTASI BARU -->
+
+    <div class="mobile-slideshow">
+
+        <div class="mobile-slide-header">
+            <span class="mobile-camera">📷</span>
+            <span>Dokumentasi Kegiatan</span>
+        </div>
+
+        <div class="mobile-slide-photo">
+            <img
+                id="mobileSlide"
+                src="Dokumentasi%20Natal/Foto%201.jpeg"
+                alt="Dokumentasi Kegiatan"
+            >
         </div>
 
         <button
@@ -331,98 +430,23 @@ html, body {
 
     </div>
 
-    <!-- Menu desktop -->
-    <a
-        class="desktop-menu menu-1"
-        href="https://kemenkeu.sharepoint.com/:f:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202025%20(PIC%20BC)?d=w3260b0952d4d415597d765fe60072ab9&csf=1&web=1&e=eofxs4"
-        aria-label="Dokumen Natal 2025"
-    ></a>
+    <!-- MENU MOBILE -->
 
-    <a
-        class="desktop-menu menu-2"
-        href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&newTargetListUrl=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents&viewpath=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FForms%2FList%2Easpx&id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FSusunan%20Panitia%20Natal%20Kemenkeu%20Sumut%202026%2Epdf&parent=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026"
-        aria-label="Kontak Panitia"
-    ></a>
+    <a class="mobile-menu menu-1"
+       href="https://kemenkeu.sharepoint.com/:f:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202025%20(PIC%20BC)?d=w3260b0952d4d415597d765fe60072ab9&csf=1&web=1&e=eofxs4"
+       aria-label="Dokumen Natal 2025"></a>
 
-    <a
-        class="desktop-menu menu-3"
-        href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FUndangan%20dan%20Notula%20dan%20Detil%20Dokumen&viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&d=wa404ef763e0547a780e1fc00a59af11c&csf=1&CID=39c8dddd%2D5429%2D401b%2D8295%2Dba82dea2911d&FolderCTID=0x012000CBF6E11810F4AE479F0928ABC8E0FB35"
-        aria-label="Dokumen Natal 2026"
-    ></a>
+    <a class="mobile-menu menu-2"
+       href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&newTargetListUrl=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents&viewpath=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FForms%2FList%2Easpx&id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FSusunan%20Panitia%20Natal%20Kemenkeu%20Sumut%202026%2Epdf&parent=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026"
+       aria-label="Kontak Panitia"></a>
 
-    <a
-        class="desktop-menu menu-4"
-        href="https://kemenkeu.sharepoint.com/:x:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202026/Kertas%20Kerja%20Panitia%20DJPb%20untuk%20Natal%20Tahun%202026.xlsx?d=w89e58e8e062a4c238f2764d534b44660&csf=1&web=1&e=1vyyAu"
-        aria-label="Kertas Kerja Panitia"
-    ></a>
+    <a class="mobile-menu menu-3"
+       href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FUndangan%20dan%20Notula%20dan%20Detil%20Dokumen&viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&d=wa404ef763e0547a780e1fc00a59af11c&csf=1&CID=39c8dddd%2D5429%2D401b%2D8295%2Dba82dea2911d&FolderCTID=0x012000CBF6E11810F4AE479F0928ABC8E0FB35"
+       aria-label="Dokumen Natal 2026"></a>
 
-</div>
-
-
-<!-- =====================================
-     MOBILE
-===================================== -->
-
-<div class="mobile-page">
-
-    <!-- Background desain portrait -->
-    <img
-        class="mobile-background"
-        src="Portal-Natal-Mobile.png"
-        alt="Natal Kementerian Keuangan versi mobile"
-    >
-
-    <!-- Dokumentasi kegiatan mobile -->
-    <div class="mobile-slideshow">
-
-        <img
-            id="mobileSlide"
-            src="Dokumentasi%20Natal/Foto%201.jpeg"
-            alt="Dokumentasi Kegiatan"
-        >
-
-        <button
-            class="slide-button prev"
-            onclick="changeSlide(-1)"
-            aria-label="Foto sebelumnya"
-        >
-            &#8249;
-        </button>
-
-        <button
-            class="slide-button next"
-            onclick="changeSlide(1)"
-            aria-label="Foto berikutnya"
-        >
-            &#8250;
-        </button>
-
-    </div>
-
-    <!-- Menu mobile -->
-    <a
-        class="mobile-menu menu-1"
-        href="https://kemenkeu.sharepoint.com/:f:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202025%20(PIC%20BC)?d=w3260b0952d4d415597d765fe60072ab9&csf=1&web=1&e=eofxs4"
-        aria-label="Dokumen Natal 2025"
-    ></a>
-
-    <a
-        class="mobile-menu menu-2"
-        href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&newTargetListUrl=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents&viewpath=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FForms%2FList%2Easpx&id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FSusunan%20Panitia%20Natal%20Kemenkeu%20Sumut%202026%2Epdf&parent=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026"
-        aria-label="Kontak Panitia"
-    ></a>
-
-    <a
-        class="mobile-menu menu-3"
-        href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FUndangan%20dan%20Notula%20dan%20Detil%20Dokumen&viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&d=wa404ef763e0547a780e1fc00a59af11c&csf=1&CID=39c8dddd%2D5429%2D401b%2D8295%2Dba82dea2911d&FolderCTID=0x012000CBF6E11810F4AE479F0928ABC8E0FB35"
-        aria-label="Dokumen Natal 2026"
-    ></a>
-
-    <a
-        class="mobile-menu menu-4"
-        href="https://kemenkeu.sharepoint.com/:x:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202026/Kertas%20Kerja%20Panitia%20DJPb%20untuk%20Natal%20Tahun%202026.xlsx?d=w89e58e8e062a4c238f2764d534b44660&csf=1&web=1&e=1vyyAu"
-        aria-label="Kertas Kerja Panitia"
-    ></a>
+    <a class="mobile-menu menu-4"
+       href="https://kemenkeu.sharepoint.com/:x:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202026/Kertas%20Kerja%20Panitia%20DJPb%20untuk%20Natal%20Tahun%202026.xlsx?d=w89e58e8e062a4c238f2764d534b44660&csf=1&web=1&e=1vyyAu"
+       aria-label="Kertas Kerja Panitia"></a>
 
 </div>
 
