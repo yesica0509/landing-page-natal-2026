@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -322,7 +321,9 @@ html, body {
     right: 9px;
 }
 
-/* MENU MOBILE TANPA EFEK KILAT */
+/* =====================================
+   MENU MOBILE + EFEK KOTAK CAHAYA
+===================================== */
 
 .mobile-menu {
     position: absolute;
@@ -332,6 +333,56 @@ html, body {
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 }
+
+/* Lapisan kotak cahaya */
+
+.mobile-menu::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    background: transparent;
+    opacity: 0;
+    pointer-events: none;
+
+    transition:
+        opacity 180ms ease,
+        background 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease;
+}
+
+/* Cahaya saat disentuh, digeser, atau dipilih */
+
+.mobile-menu.is-touching::after,
+.mobile-menu.is-selected::after {
+    opacity: 1;
+    border-color: rgba(255,255,255,0.95);
+    background: rgba(255,255,255,0.13);
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,0.8),
+        0 0 17px rgba(125,190,255,0.5),
+        inset 0 0 10px rgba(255,255,255,0.4);
+}
+
+/* Hover untuk perangkat yang memiliki kursor */
+
+@media (hover: hover) and (pointer: fine) {
+    .mobile-menu:hover::after {
+        opacity: 1;
+        border-color: rgba(255,255,255,0.95);
+        background: rgba(255,255,255,0.13);
+
+        box-shadow:
+            0 0 8px rgba(255,255,255,0.8),
+            0 0 17px rgba(125,190,255,0.5),
+            inset 0 0 10px rgba(255,255,255,0.4);
+    }
+}
+
+/* POSISI MENU MOBILE TETAP */
 
 .mobile-menu.menu-1 {
     left: 3.5%;
@@ -352,7 +403,6 @@ html, body {
     left: 50%;
     top: 71.8%;
 }
-
 
 /* =====================================
    RESPONSIVE OTOMATIS
@@ -529,18 +579,22 @@ html, body {
 
     <a class="mobile-menu menu-1"
        href="https://kemenkeu.sharepoint.com/:f:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202025%20(PIC%20BC)?d=w3260b0952d4d415597d765fe60072ab9&csf=1&web=1&e=eofxs4"
+       target="_blank" rel="noopener"
        aria-label="Dokumen Natal 2025"></a>
 
     <a class="mobile-menu menu-2"
        href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&newTargetListUrl=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents&viewpath=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FForms%2FList%2Easpx&id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FSusunan%20Panitia%20Natal%20Kemenkeu%20Sumut%202026%2Epdf&parent=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026"
+       target="_blank" rel="noopener"
        aria-label="Kontak Panitia 2026"></a>
 
     <a class="mobile-menu menu-3"
        href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FUndangan%20dan%20Notula%20dan%20Detil%20Dokumen&viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&d=wa404ef763e0547a780e1fc00a59af11c&csf=1&CID=39c8dddd%2D5429%2D401b%2D8295%2Dba82dea2911d&FolderCTID=0x012000CBF6E11810F4AE479F0928ABC8E0FB35"
+       target="_blank" rel="noopener"
        aria-label="Dokumen Natal 2026"></a>
 
     <a class="mobile-menu menu-4"
        href="https://kemenkeu.sharepoint.com/:x:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202026/Kertas%20Kerja%20Panitia%20DJPb%20untuk%20Natal%20Tahun%202026.xlsx?d=w89e58e8e062a4c238f2764d534b44660&csf=1&web=1&e=1vyyAu"
+       target="_blank" rel="noopener"
        aria-label="Kertas Kerja Panitia"></a>
 
 </div>
@@ -636,29 +690,148 @@ startSlideshow();
 
 
 /* =====================================
-   EFEK KLIK KHUSUS LAPTOP
+   EFEK KOTAK CAHAYA DESKTOP
+   Hanya satu menu yang disorot
 ===================================== */
 
 const desktopMenus = document.querySelectorAll(".desktop-menu");
 
+/* Ketika kursor masuk ke menu lain,
+   hapus sorotan pilihan sebelumnya */
+
 desktopMenus.forEach(function(menu) {
 
-    menu.addEventListener("click", function() {
-
-        const alreadySelected =
-            this.classList.contains("is-selected");
+    menu.addEventListener("mouseenter", function() {
 
         desktopMenus.forEach(function(item) {
             item.classList.remove("is-selected");
         });
 
-        if (!alreadySelected) {
-            this.classList.add("is-selected");
-        }
+    });
+
+    /* Setelah diklik, sorotan tetap aktif */
+
+    menu.addEventListener("click", function() {
+
+        desktopMenus.forEach(function(item) {
+            item.classList.remove("is-selected");
+        });
+
+        this.classList.add("is-selected");
 
     });
 
 });
+
+
+/* =====================================
+   EFEK SENTUH MOBILE
+   Hanya satu menu yang disorot
+===================================== */
+
+const mobileMenus = document.querySelectorAll(".mobile-menu");
+
+/* Mencari menu tepat di bawah posisi jari */
+
+function findMobileMenuAt(x, y) {
+
+    const element = document.elementFromPoint(x, y);
+
+    return element
+        ? element.closest(".mobile-menu")
+        : null;
+}
+
+/* Menghapus seluruh sorotan mobile */
+
+function clearMobileMenuHighlights() {
+
+    mobileMenus.forEach(function(menu) {
+        menu.classList.remove("is-touching");
+        menu.classList.remove("is-selected");
+    });
+
+}
+
+/* Saat jari mulai menyentuh layar */
+
+document.addEventListener("pointerdown", function(event) {
+
+    if (event.pointerType !== "touch") return;
+
+    /* Hapus sorotan menu sebelumnya terlebih dahulu */
+
+    clearMobileMenuHighlights();
+
+    const menu = findMobileMenuAt(
+        event.clientX,
+        event.clientY
+    );
+
+    if (menu) {
+        menu.classList.add("is-touching");
+    }
+
+}, { passive: true });
+
+
+/* Saat jari digeser, cahaya mengikuti jari */
+
+document.addEventListener("pointermove", function(event) {
+
+    if (event.pointerType !== "touch") return;
+
+    const menu = findMobileMenuAt(
+        event.clientX,
+        event.clientY
+    );
+
+    mobileMenus.forEach(function(item) {
+
+        item.classList.toggle(
+            "is-touching",
+            item === menu
+        );
+
+    });
+
+}, { passive: true });
+
+
+/* Saat jari dilepas, sorotan menetap hanya
+   pada satu menu tujuan */
+
+document.addEventListener("pointerup", function(event) {
+
+    if (event.pointerType !== "touch") return;
+
+    const releasedMenu = findMobileMenuAt(
+        event.clientX,
+        event.clientY
+    );
+
+    clearMobileMenuHighlights();
+
+    if (releasedMenu) {
+        releasedMenu.classList.add("is-selected");
+    }
+
+}, { passive: true });
+
+
+/* Jika sentuhan dibatalkan */
+
+document.addEventListener("pointercancel", function(event) {
+
+    if (event.pointerType === "touch") {
+
+        mobileMenus.forEach(function(menu) {
+            menu.classList.remove("is-touching");
+        });
+
+    }
+
+}, { passive: true });
 
 </script>
 
