@@ -11,6 +11,10 @@
   box-sizing: border-box;
 }
 
+/* =====================================
+   PENGATURAN DASAR
+===================================== */
+
 html, body {
   margin: 0;
   padding: 0;
@@ -18,10 +22,6 @@ html, body {
   height: 100%;
   overflow: hidden;
 }
-
-/* =====================================
-   TAMPILAN FULL SCREEN
-===================================== */
 
 body {
   background: #241c1a;
@@ -53,7 +53,7 @@ body {
 .slideshow {
   position: absolute;
   left: 47.4%;
-  top: 14.0%;
+  top: 14%;
   width: 47.4%;
   height: 52.5%;
 
@@ -69,7 +69,7 @@ body {
     0 2px 5px rgba(0,0,0,0.12);
 }
 
-/* FOTO MEMENUHI BINGKAI */
+/* FOTO SLIDESHOW */
 
 .slide-image {
   position: absolute;
@@ -216,23 +216,76 @@ body {
 }
 
 /* =====================================
-   RESPONSIVE
+   RESPONSIVE UNTUK HP
+   RASIO ASLI 1984 : 793
 ===================================== */
 
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+  }
+
+  body {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .landing-page {
+    width: 100vw;
+    height: auto;
+    aspect-ratio: 1984 / 793;
+    max-height: 100dvh;
+    flex-shrink: 0;
+  }
+
+  .main-design {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+
+  .slideshow {
+    border-width: 1px;
+  }
+
   .menu-link {
     border-radius: 8px;
   }
 
   .slide-header {
     gap: 4px;
+    font-size: clamp(5px, 1.2vw, 12px);
+  }
+
+  .camera-icon {
+    font-size: clamp(6px, 1.5vw, 14px);
   }
 
   .slide-button {
-    width: 7%;
+    width: 6.5%;
+    font-size: clamp(8px, 2vw, 17px);
   }
+
 }
 
+/* =====================================
+   HP DENGAN LAYAR SANGAT KECIL
+===================================== */
+
+@media screen and (max-width: 360px) {
+
+  .slide-header {
+    gap: 2px;
+  }
+
+  .slideshow {
+    border-width: 1px;
+  }
+
+}
 </style>
 </head>
 
@@ -319,14 +372,14 @@ body {
     aria-label="Dokumen Natal 2026"
   ></a>
 
-  <!-- JADWAL RAPAT -->
+  <!-- KERTAS KERJA PANITIA -->
 
   <a
     class="menu-link menu-jadwal"
     href="https://kemenkeu.sharepoint.com/:x:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202026/Kertas%20Kerja%20Panitia%20DJPb%20untuk%20Natal%20Tahun%202026.xlsx?d=w89e58e8e062a4c238f2764d534b44660&csf=1&web=1&e=1vyyAu"
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Jadwal Rapat"
+    aria-label="Kertas Kerja Panitia"
   ></a>
 
 </main>
