@@ -174,7 +174,6 @@ html, body {
     background: transparent;
     opacity: 0;
     pointer-events: none;
-
     transition:
         opacity 200ms ease,
         background 200ms ease,
@@ -207,7 +206,6 @@ html, body {
         0 0 17px rgba(125,190,255,0.5),
         inset 0 0 10px rgba(255,255,255,0.4);
 }
-
 
 /* =====================================
    MOBILE
@@ -327,25 +325,25 @@ html, body {
 
 .mobile-menu {
     position: absolute;
-    width: 44%;
-    height: 14%;
+    width: 46%;
+    height: 15.5%;
     z-index: 10;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+    border-radius: 22px;
 }
 
-/* Lapisan kotak cahaya */
+/* Kotak cahaya mengikuti sudut kartu mobile */
 
 .mobile-menu::after {
     content: "";
     position: absolute;
     inset: 0;
     border: 2px solid transparent;
-    border-radius: 15px;
+    border-radius: 22px;
     background: transparent;
     opacity: 0;
     pointer-events: none;
-
     transition:
         opacity 180ms ease,
         background 180ms ease,
@@ -353,14 +351,13 @@ html, body {
         border-color 180ms ease;
 }
 
-/* Cahaya saat disentuh, digeser, atau dipilih */
+/* Cahaya saat disentuh atau dipilih */
 
 .mobile-menu.is-touching::after,
 .mobile-menu.is-selected::after {
     opacity: 1;
     border-color: rgba(255,255,255,0.95);
     background: rgba(255,255,255,0.13);
-
     box-shadow:
         0 0 8px rgba(255,255,255,0.8),
         0 0 17px rgba(125,190,255,0.5),
@@ -374,7 +371,6 @@ html, body {
         opacity: 1;
         border-color: rgba(255,255,255,0.95);
         background: rgba(255,255,255,0.13);
-
         box-shadow:
             0 0 8px rgba(255,255,255,0.8),
             0 0 17px rgba(125,190,255,0.5),
@@ -382,7 +378,7 @@ html, body {
     }
 }
 
-/* POSISI MENU MOBILE TETAP */
+/* POSISI MENU MOBILE */
 
 .mobile-menu.menu-1 {
     left: 3.5%;
@@ -696,7 +692,7 @@ startSlideshow();
 
 const desktopMenus = document.querySelectorAll(".desktop-menu");
 
-/* Ketika kursor masuk ke menu lain,
+/* Saat kursor berpindah ke menu lain,
    hapus sorotan pilihan sebelumnya */
 
 desktopMenus.forEach(function(menu) {
@@ -709,7 +705,8 @@ desktopMenus.forEach(function(menu) {
 
     });
 
-    /* Setelah diklik, sorotan tetap aktif */
+    /* Setelah diklik, sorotan tetap aktif
+       sampai kursor masuk ke menu lain */
 
     menu.addEventListener("click", function() {
 
@@ -759,8 +756,6 @@ document.addEventListener("pointerdown", function(event) {
 
     if (event.pointerType !== "touch") return;
 
-    /* Hapus sorotan menu sebelumnya terlebih dahulu */
-
     clearMobileMenuHighlights();
 
     const menu = findMobileMenuAt(
@@ -775,7 +770,7 @@ document.addEventListener("pointerdown", function(event) {
 }, { passive: true });
 
 
-/* Saat jari digeser, cahaya mengikuti jari */
+/* Saat jari digeser, cahaya mengikuti posisi jari */
 
 document.addEventListener("pointermove", function(event) {
 
@@ -798,8 +793,7 @@ document.addEventListener("pointermove", function(event) {
 }, { passive: true });
 
 
-/* Saat jari dilepas, sorotan menetap hanya
-   pada satu menu tujuan */
+/* Saat jari dilepas, sorotan menetap hanya pada menu tujuan */
 
 document.addEventListener("pointerup", function(event) {
 
