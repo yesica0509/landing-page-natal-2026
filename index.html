@@ -163,7 +163,7 @@ html, body {
 }
 
 /* =====================================
-   EFEK KOTAK CAHAYA KHUSUS LAPTOP
+   EFEK KOTAK CAHAYA LAPTOP
 ===================================== */
 
 .desktop-menu::after {
@@ -177,11 +177,27 @@ html, body {
     pointer-events: none;
 
     transition:
-        opacity 180ms ease,
-        background 180ms ease,
-        box-shadow 180ms ease,
-        border-color 180ms ease;
+        opacity 200ms ease,
+        background 200ms ease,
+        box-shadow 200ms ease,
+        border-color 200ms ease;
 }
+
+/* Muncul saat kursor diarahkan */
+
+@media (hover: hover) and (pointer: fine) {
+    .desktop-menu:hover::after {
+        opacity: 1;
+        border-color: rgba(255,255,255,0.95);
+        background: rgba(255,255,255,0.13);
+        box-shadow:
+            0 0 8px rgba(255,255,255,0.8),
+            0 0 17px rgba(125,190,255,0.5),
+            inset 0 0 10px rgba(255,255,255,0.4);
+    }
+}
+
+/* Tetap aktif setelah dipilih */
 
 .desktop-menu.is-selected::after {
     opacity: 1;
@@ -192,6 +208,7 @@ html, body {
         0 0 17px rgba(125,190,255,0.5),
         inset 0 0 10px rgba(255,255,255,0.4);
 }
+
 
 /* =====================================
    MOBILE
@@ -305,7 +322,7 @@ html, body {
     right: 9px;
 }
 
-/* MENU MOBILE - TANPA EFEK KILAT */
+/* MENU MOBILE TANPA EFEK KILAT */
 
 .mobile-menu {
     position: absolute;
@@ -335,6 +352,7 @@ html, body {
     left: 50%;
     top: 71.8%;
 }
+
 
 /* =====================================
    RESPONSIVE OTOMATIS
@@ -507,7 +525,7 @@ html, body {
 
     </div>
 
-    <!-- MENU MOBILE TANPA EFEK -->
+    <!-- MENU MOBILE -->
 
     <a class="mobile-menu menu-1"
        href="https://kemenkeu.sharepoint.com/:f:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202025%20(PIC%20BC)?d=w3260b0952d4d415597d765fe60072ab9&csf=1&web=1&e=eofxs4"
@@ -529,7 +547,7 @@ html, body {
 
 
 <!-- =====================================
-     JAVASCRIPT SLIDESHOW
+     JAVASCRIPT SLIDESHOW OTOMATIS
 ===================================== -->
 
 <script>
@@ -541,43 +559,42 @@ const slides = [
 ];
 
 let currentSlide = 0;
-let activeLayer = 0;
 let slideTimer = null;
+let activeLayer = 0;
 
-/* Siapkan foto berikutnya agar pergantian lancar */
+/* Siapkan foto agar tidak terlambat saat berganti */
 
-const preloadedSlides = slides.map(function(source) {
+slides.forEach(function(source) {
     const image = new Image();
     image.src = source;
-    return image;
 });
 
-/* Crossfade untuk desktop dan mobile */
+/* Ganti foto dengan transisi silang */
 
 function showSlide() {
 
     const nextLayer = activeLayer === 0 ? 1 : 0;
 
-    const desktopNext = document.getElementById(
-        nextLayer === 0 ? "desktopSlideA" : "desktopSlideB"
-    );
-
     const desktopCurrent = document.getElementById(
         activeLayer === 0 ? "desktopSlideA" : "desktopSlideB"
     );
 
-    const mobileNext = document.getElementById(
-        nextLayer === 0 ? "mobileSlideA" : "mobileSlideB"
+    const desktopNext = document.getElementById(
+        nextLayer === 0 ? "desktopSlideA" : "desktopSlideB"
     );
 
     const mobileCurrent = document.getElementById(
         activeLayer === 0 ? "mobileSlideA" : "mobileSlideB"
     );
 
-    const nextSource = slides[currentSlide];
+    const mobileNext = document.getElementById(
+        nextLayer === 0 ? "mobileSlideA" : "mobileSlideB"
+    );
 
-    desktopNext.src = nextSource;
-    mobileNext.src = nextSource;
+    const source = slides[currentSlide];
+
+    desktopNext.src = source;
+    mobileNext.src = source;
 
     desktopNext.classList.add("active");
     mobileNext.classList.add("active");
@@ -599,7 +616,7 @@ function changeSlide(direction) {
     startSlideshow();
 }
 
-/* Otomatis berganti setiap 5 detik */
+/* Otomatis setiap 5 detik */
 
 function startSlideshow() {
 
@@ -615,48 +632,33 @@ function startSlideshow() {
     }, 5000);
 }
 
-/* Mulai slideshow */
-
 startSlideshow();
 
 
 /* =====================================
-   EFEK MENU KHUSUS LAPTOP SAJA
+   EFEK KLIK KHUSUS LAPTOP
 ===================================== */
 
-const isDesktop = window.matchMedia(
-    "(min-width: 701px)"
-).matches;
+const desktopMenus = document.querySelectorAll(".desktop-menu");
 
-if (isDesktop) {
+desktopMenus.forEach(function(menu) {
 
-    const desktopMenus = document.querySelectorAll(
-        ".desktop-menu"
-    );
+    menu.addEventListener("click", function() {
 
-    desktopMenus.forEach(function(menu) {
+        const alreadySelected =
+            this.classList.contains("is-selected");
 
-        menu.addEventListener("click", function() {
-
-            const alreadySelected =
-                this.classList.contains("is-selected");
-
-            // Lepaskan semua sorotan sebelumnya
-            desktopMenus.forEach(function(item) {
-                item.classList.remove("is-selected");
-            });
-
-            // Jika belum dipilih, aktifkan sorotan baru
-            if (!alreadySelected) {
-                this.classList.add("is-selected");
-            }
-
-            // Tautan tetap terbuka di tab baru
+        desktopMenus.forEach(function(item) {
+            item.classList.remove("is-selected");
         });
+
+        if (!alreadySelected) {
+            this.classList.add("is-selected");
+        }
 
     });
 
-}
+});
 
 </script>
 
