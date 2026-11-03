@@ -4,23 +4,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Natal Kementerian Keuangan Sumatera Utara 2026</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
 
 /* =====================================
    PENGATURAN DASAR
 ===================================== */
 
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
 }
 
 body {
@@ -28,14 +29,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
+
+/* =====================================
+   DESAIN UTAMA
+   RASIO ASLI 1984 x 793
+===================================== */
 
 .landing-page {
   position: relative;
-  width: 100vw;
-  height: 100vh;
-  max-width: none;
+  width: min(100vw, calc(100vh * 1984 / 793));
+  aspect-ratio: 1984 / 793;
   overflow: hidden;
+  flex-shrink: 0;
   line-height: 0;
 }
 
@@ -43,15 +50,16 @@ body {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: contain;
 }
 
 /* =====================================
-   KOTAK DOKUMENTASI
+   SLIDESHOW DOKUMENTASI
 ===================================== */
 
 .slideshow {
   position: absolute;
+
   left: 47.4%;
   top: 14%;
   width: 47.4%;
@@ -69,7 +77,7 @@ body {
     0 2px 5px rgba(0,0,0,0.12);
 }
 
-/* FOTO SLIDESHOW */
+/* FOTO */
 
 .slide-image {
   position: absolute;
@@ -116,7 +124,7 @@ body {
 
   color: #ffffff;
   font-family: Arial, sans-serif;
-  font-size: clamp(12px, 1.2vw, 18px);
+  font-size: clamp(5px, 1.2vw, 18px);
   font-weight: 700;
 
   text-shadow: 0 1px 4px rgba(0,0,0,0.65);
@@ -125,7 +133,7 @@ body {
 }
 
 .camera-icon {
-  font-size: clamp(15px, 1.5vw, 22px);
+  font-size: clamp(6px, 1.5vw, 22px);
 }
 
 /* =====================================
@@ -145,7 +153,7 @@ body {
   background: rgba(255,255,255,0.90);
   color: #173957;
 
-  font-size: clamp(17px, 2vw, 26px);
+  font-size: clamp(8px, 2vw, 26px);
 
   display: flex;
   justify-content: center;
@@ -172,11 +180,12 @@ body {
 }
 
 /* =====================================
-   EMPAT MENU SHAREPOINT
+   MENU SHAREPOINT
 ===================================== */
 
 .menu-link {
   position: absolute;
+
   top: 69.5%;
   height: 23%;
 
@@ -216,16 +225,16 @@ body {
 }
 
 /* =====================================
-   RESPONSIVE UNTUK HP
-   RASIO ASLI 1984 : 793
+   PENYESUAIAN LAYAR PORTRAIT
 ===================================== */
 
-@media screen and (max-width: 600px) {
+@media screen and (orientation: portrait) {
 
   html, body {
     width: 100%;
     height: 100%;
     height: 100dvh;
+    overflow: hidden;
   }
 
   body {
@@ -234,10 +243,13 @@ body {
   }
 
   .landing-page {
-    width: 100vw;
+    width: min(
+      100vw,
+      calc(100dvh * 1984 / 793)
+    );
+
     height: auto;
     aspect-ratio: 1984 / 793;
-    max-height: 100dvh;
     flex-shrink: 0;
   }
 
@@ -251,12 +263,8 @@ body {
     border-width: 1px;
   }
 
-  .menu-link {
-    border-radius: 8px;
-  }
-
   .slide-header {
-    gap: 4px;
+    gap: 2px;
     font-size: clamp(5px, 1.2vw, 12px);
   }
 
@@ -265,27 +273,39 @@ body {
   }
 
   .slide-button {
-    width: 6.5%;
     font-size: clamp(8px, 2vw, 17px);
+  }
+
+  .menu-link {
+    border-radius: 8px;
   }
 
 }
 
 /* =====================================
-   HP DENGAN LAYAR SANGAT KECIL
+   PENYESUAIAN LAYAR LANDSCAPE
 ===================================== */
 
-@media screen and (max-width: 360px) {
+@media screen and (orientation: landscape) {
 
-  .slide-header {
-    gap: 2px;
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
   }
 
-  .slideshow {
-    border-width: 1px;
+  .landing-page {
+    width: min(
+      100vw,
+      calc(100vh * 1984 / 793)
+    );
+
+    height: auto;
+    aspect-ratio: 1984 / 793;
   }
 
 }
+
 </style>
 </head>
 
@@ -398,38 +418,55 @@ let slideTimer;
 /* MENAMPILKAN FOTO */
 
 function showSlide(index) {
-  currentSlide = (index + slides.length) % slides.length;
+
+  currentSlide =
+    (index + slides.length) % slides.length;
 
   slides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === currentSlide);
+    slide.classList.toggle(
+      "active",
+      i === currentSlide
+    );
   });
+
 }
 
 /* TOMBOL PANAH */
 
 function changeSlide(direction) {
+
   showSlide(currentSlide + direction);
+
   restartTimer();
+
 }
 
 /* PERGANTIAN OTOMATIS SETIAP 5 DETIK */
 
 function startTimer() {
+
   slideTimer = setInterval(() => {
+
     showSlide(currentSlide + 1);
+
   }, 5000);
+
 }
 
 /* RESET TIMER */
 
 function restartTimer() {
+
   clearInterval(slideTimer);
+
   startTimer();
+
 }
 
 /* MULAI DARI FOTO PERTAMA */
 
 showSlide(0);
+
 startTimer();
 
 </script>
