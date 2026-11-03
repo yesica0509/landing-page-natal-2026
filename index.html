@@ -20,7 +20,7 @@ html, body {
 }
 
 /* =====================================
-   DESKTOP - PERTAHANKAN DESAIN LAPTOP
+   DESKTOP - TAMPILAN LAPTOP
 ===================================== */
 
 .desktop-page {
@@ -40,7 +40,7 @@ html, body {
     object-fit: fill;
 }
 
-/* DOKUMENTASI DESKTOP */
+/* SLIDESHOW DESKTOP */
 
 .desktop-slideshow {
     position: absolute;
@@ -150,7 +150,7 @@ html, body {
 
 
 /* =====================================
-   MOBILE - BACKGROUND PORTRAIT
+   MOBILE - TAMPILAN HP
 ===================================== */
 
 .mobile-page {
@@ -173,55 +173,59 @@ html, body {
 }
 
 /* =====================================
-   SLIDESHOW MOBILE BARU
-   Menutupi kotak dokumentasi lama
+   SLIDESHOW MOBILE - UKURAN DIPERKECIL
 ===================================== */
 
 .mobile-slideshow {
     position: absolute;
-    left: 3.5%;
-    top: 33.37%;
-    width: 93%;
-    height: 26%;
+
+    /* Posisi dan ukuran kotak baru */
+    left: 4%;
+    top: 33%;
+    width: 92%;
+    height: 20%;
+
     background: #fffaf6;
-    border: 3px solid rgba(255,255,255,0.95);
-    border-radius: 22px;
+    border: 3px solid white;
+    border-radius: 19px;
     overflow: hidden;
-    box-shadow: 0 7px 18px rgba(70,45,30,0.22);
+    box-shadow: 0 5px 15px rgba(70,45,30,0.20);
     z-index: 4;
 }
 
-/* Header dokumentasi */
+/* HEADER DOKUMENTASI MOBILE */
 
 .mobile-slide-header {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 17%;
-    padding: 0 18px;
+    height: 19%;
+
+    padding: 0 15px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 9px;
+
     background: #fffaf6;
     color: #173c60;
-    font-size: clamp(13px, 3.8vw, 18px);
+    font-size: clamp(12px, 3.5vw, 17px);
     font-weight: bold;
     z-index: 3;
 }
 
 .mobile-camera {
-    font-size: clamp(19px, 5vw, 25px);
+    font-size: clamp(18px, 4.5vw, 23px);
 }
 
-/* Foto dokumentasi */
+/* FOTO SLIDESHOW MOBILE */
 
 .mobile-slide-photo {
     position: absolute;
     left: 0;
-    top: 17%;
+    top: 19%;
     width: 100%;
-    height: 83%;
+    height: 81%;
     background: #ddd;
     overflow: hidden;
 }
@@ -233,16 +237,16 @@ html, body {
     display: block;
 }
 
-/* Tombol slideshow mobile */
+/* TOMBOL PANAH MOBILE */
 
 .mobile-slideshow .slide-button {
-    top: 50%;
+    top: 59.5%;
     transform: translateY(-50%);
-    width: 34px;
-    height: 34px;
+    width: 33px;
+    height: 33px;
     font-size: 21px;
     color: #173c60;
-    background: rgba(255,255,255,0.94);
+    background: rgba(255,255,255,0.95);
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
@@ -364,6 +368,8 @@ html, body {
 
     </div>
 
+    <!-- MENU DESKTOP -->
+
     <a class="desktop-menu menu-1"
        href="https://kemenkeu.sharepoint.com/:f:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202025%20(PIC%20BC)?d=w3260b0952d4d415597d765fe60072ab9&csf=1&web=1&e=eofxs4"
        aria-label="Dokumen Natal 2025"></a>
@@ -395,7 +401,7 @@ html, body {
         alt="Natal Kementerian Keuangan versi mobile"
     >
 
-    <!-- KOTAK DOKUMENTASI BARU -->
+    <!-- SLIDESHOW MOBILE -->
 
     <div class="mobile-slideshow">
 
@@ -412,19 +418,15 @@ html, body {
             >
         </div>
 
-        <button
-            class="slide-button prev"
+        <button class="slide-button prev"
             onclick="changeSlide(-1)"
-            aria-label="Foto sebelumnya"
-        >
+            aria-label="Foto sebelumnya">
             &#8249;
         </button>
 
-        <button
-            class="slide-button next"
+        <button class="slide-button next"
             onclick="changeSlide(1)"
-            aria-label="Foto berikutnya"
-        >
+            aria-label="Foto berikutnya">
             &#8250;
         </button>
 
