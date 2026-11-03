@@ -63,8 +63,12 @@ html, body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 1;
+    opacity: 0;
     transition: opacity 650ms ease-in-out;
+}
+
+.desktop-slideshow img.active {
+    opacity: 1;
 }
 
 .desktop-slide-title {
@@ -92,7 +96,7 @@ html, body {
     margin-right: 12px;
 }
 
-/* TOMBOL PANAH DESKTOP */
+/* PANAH SLIDESHOW */
 
 .slide-button {
     position: absolute;
@@ -108,7 +112,7 @@ html, body {
     justify-content: center;
     cursor: pointer;
     z-index: 5;
-    transition: background 200ms ease, transform 200ms ease;
+    transition: background 180ms ease;
 }
 
 .slide-button:hover {
@@ -136,10 +140,7 @@ html, body {
     z-index: 10;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
-    outline: none;
 }
-
-/* Posisi empat menu */
 
 .desktop-menu.menu-1 {
     left: 8.2%;
@@ -162,58 +163,35 @@ html, body {
 }
 
 /* =====================================
-   EFEK KILAT KHUSUS DESKTOP
+   EFEK KOTAK CAHAYA KHUSUS LAPTOP
 ===================================== */
-
-/* Lapisan sorotan pada kartu */
 
 .desktop-menu::after {
     content: "";
     position: absolute;
     inset: 0;
-    border: 2px solid rgba(255,255,255,0);
+    border: 2px solid transparent;
     border-radius: 15px;
-    background: rgba(255,255,255,0);
-    box-shadow: 0 0 0 rgba(255,255,255,0);
+    background: transparent;
     opacity: 0;
     pointer-events: none;
-    transition:
-        opacity 250ms ease,
-        background 250ms ease,
-        box-shadow 250ms ease,
-        border-color 250ms ease;
-}
 
-/* Menu yang sedang dipilih */
+    transition:
+        opacity 180ms ease,
+        background 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease;
+}
 
 .desktop-menu.is-selected::after {
     opacity: 1;
     border-color: rgba(255,255,255,0.95);
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.13);
     box-shadow:
-        0 0 9px rgba(255,255,255,0.85),
-        0 0 20px rgba(125,190,255,0.55),
-        inset 0 0 12px rgba(255,255,255,0.45);
+        0 0 8px rgba(255,255,255,0.8),
+        0 0 17px rgba(125,190,255,0.5),
+        inset 0 0 10px rgba(255,255,255,0.4);
 }
-
-/* Efek kilat sekali saat dipilih */
-
-.desktop-menu.is-selected {
-    animation: cardFlash 350ms ease-out;
-}
-
-@keyframes cardFlash {
-    0% {
-        filter: brightness(1);
-    }
-    45% {
-        filter: brightness(1.22);
-    }
-    100% {
-        filter: brightness(1);
-    }
-}
-
 
 /* =====================================
    MOBILE
@@ -292,12 +270,18 @@ html, body {
 }
 
 .mobile-slide-photo img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    opacity: 1;
+    opacity: 0;
     transition: opacity 650ms ease-in-out;
+}
+
+.mobile-slide-photo img.active {
+    opacity: 1;
 }
 
 /* PANAH MOBILE */
@@ -352,9 +336,8 @@ html, body {
     top: 71.8%;
 }
 
-
 /* =====================================
-   RESPONSIVE
+   RESPONSIVE OTOMATIS
 ===================================== */
 
 @media screen and (max-width: 700px) {
@@ -410,7 +393,14 @@ html, body {
     <div class="desktop-slideshow">
 
         <img
-            id="desktopSlide"
+            id="desktopSlideA"
+            class="active"
+            src="Dokumentasi%20Natal/Foto%201.jpeg"
+            alt="Dokumentasi Kegiatan"
+        >
+
+        <img
+            id="desktopSlideB"
             src="Dokumentasi%20Natal/Foto%201.jpeg"
             alt="Dokumentasi Kegiatan"
         >
@@ -442,18 +432,22 @@ html, body {
 
     <a class="desktop-menu menu-1"
        href="https://kemenkeu.sharepoint.com/:f:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202025%20(PIC%20BC)?d=w3260b0952d4d415597d765fe60072ab9&csf=1&web=1&e=eofxs4"
+       target="_blank" rel="noopener"
        aria-label="Dokumen Natal 2025"></a>
 
     <a class="desktop-menu menu-2"
        href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&newTargetListUrl=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents&viewpath=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FForms%2FList%2Easpx&id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FSusunan%20Panitia%20Natal%20Kemenkeu%20Sumut%202026%2Epdf&parent=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026"
-       aria-label="Kontak Panitia"></a>
+       target="_blank" rel="noopener"
+       aria-label="Kontak Panitia 2026"></a>
 
     <a class="desktop-menu menu-3"
        href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FUndangan%20dan%20Notula%20dan%20Detil%20Dokumen&viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&d=wa404ef763e0547a780e1fc00a59af11c&csf=1&CID=39c8dddd%2D5429%2D401b%2D8295%2Dba82dea2911d&FolderCTID=0x012000CBF6E11810F4AE479F0928ABC8E0FB35"
+       target="_blank" rel="noopener"
        aria-label="Dokumen Natal 2026"></a>
 
     <a class="desktop-menu menu-4"
        href="https://kemenkeu.sharepoint.com/:x:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202026/Kertas%20Kerja%20Panitia%20DJPb%20untuk%20Natal%20Tahun%202026.xlsx?d=w89e58e8e062a4c238f2764d534b44660&csf=1&web=1&e=1vyyAu"
+       target="_blank" rel="noopener"
        aria-label="Kertas Kerja Panitia"></a>
 
 </div>
@@ -479,11 +473,20 @@ html, body {
         </div>
 
         <div class="mobile-slide-photo">
+
             <img
-                id="mobileSlide"
+                id="mobileSlideA"
+                class="active"
                 src="Dokumentasi%20Natal/Foto%201.jpeg"
                 alt="Dokumentasi Kegiatan"
             >
+
+            <img
+                id="mobileSlideB"
+                src="Dokumentasi%20Natal/Foto%201.jpeg"
+                alt="Dokumentasi Kegiatan"
+            >
+
         </div>
 
         <button
@@ -504,7 +507,7 @@ html, body {
 
     </div>
 
-    <!-- MENU MOBILE -->
+    <!-- MENU MOBILE TANPA EFEK -->
 
     <a class="mobile-menu menu-1"
        href="https://kemenkeu.sharepoint.com/:f:/r/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/General/Natal%20Kemenkeu%20Sumut%20Tahun%202026/NATAL%202025%20(PIC%20BC)?d=w3260b0952d4d415597d765fe60072ab9&csf=1&web=1&e=eofxs4"
@@ -512,7 +515,7 @@ html, body {
 
     <a class="mobile-menu menu-2"
        href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&newTargetListUrl=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents&viewpath=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FForms%2FList%2Easpx&id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FSusunan%20Panitia%20Natal%20Kemenkeu%20Sumut%202026%2Epdf&parent=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026"
-       aria-label="Kontak Panitia"></a>
+       aria-label="Kontak Panitia 2026"></a>
 
     <a class="mobile-menu menu-3"
        href="https://kemenkeu.sharepoint.com/sites/ForumKanwilDJPbProvinsiSumateraUtara/Shared%20Documents/Forms/List.aspx?id=%2Fsites%2FForumKanwilDJPbProvinsiSumateraUtara%2FShared%20Documents%2FGeneral%2FNatal%20Kemenkeu%20Sumut%20Tahun%202026%2FDokumen%202026%2FUndangan%20dan%20Notula%20dan%20Detil%20Dokumen&viewid=f0790d9a%2D7585%2D4224%2D96a0%2D22daa0f1501b&d=wa404ef763e0547a780e1fc00a59af11c&csf=1&CID=39c8dddd%2D5429%2D401b%2D8295%2Dba82dea2911d&FolderCTID=0x012000CBF6E11810F4AE479F0928ABC8E0FB35"
@@ -538,9 +541,10 @@ const slides = [
 ];
 
 let currentSlide = 0;
+let activeLayer = 0;
 let slideTimer = null;
 
-/* Menyiapkan foto berikutnya sebelum ditampilkan */
+/* Siapkan foto berikutnya agar pergantian lancar */
 
 const preloadedSlides = slides.map(function(source) {
     const image = new Image();
@@ -548,37 +552,46 @@ const preloadedSlides = slides.map(function(source) {
     return image;
 });
 
-/* Transisi foto halus */
-
-function updateImage(elementId, source) {
-    const image = document.getElementById(elementId);
-
-    if (!image || image.src.endsWith(source)) return;
-
-    image.style.opacity = "0";
-
-    setTimeout(function() {
-        image.onload = function() {
-            image.style.opacity = "1";
-            image.onload = null;
-        };
-
-        image.src = source;
-
-        if (image.complete) {
-            image.style.opacity = "1";
-        }
-    }, 300);
-}
+/* Crossfade untuk desktop dan mobile */
 
 function showSlide() {
-    updateImage("desktopSlide", slides[currentSlide]);
-    updateImage("mobileSlide", slides[currentSlide]);
+
+    const nextLayer = activeLayer === 0 ? 1 : 0;
+
+    const desktopNext = document.getElementById(
+        nextLayer === 0 ? "desktopSlideA" : "desktopSlideB"
+    );
+
+    const desktopCurrent = document.getElementById(
+        activeLayer === 0 ? "desktopSlideA" : "desktopSlideB"
+    );
+
+    const mobileNext = document.getElementById(
+        nextLayer === 0 ? "mobileSlideA" : "mobileSlideB"
+    );
+
+    const mobileCurrent = document.getElementById(
+        activeLayer === 0 ? "mobileSlideA" : "mobileSlideB"
+    );
+
+    const nextSource = slides[currentSlide];
+
+    desktopNext.src = nextSource;
+    mobileNext.src = nextSource;
+
+    desktopNext.classList.add("active");
+    mobileNext.classList.add("active");
+
+    desktopCurrent.classList.remove("active");
+    mobileCurrent.classList.remove("active");
+
+    activeLayer = nextLayer;
 }
 
 /* Tombol panah manual */
 
 function changeSlide(direction) {
+
     currentSlide =
         (currentSlide + direction + slides.length) % slides.length;
 
@@ -589,59 +602,61 @@ function changeSlide(direction) {
 /* Otomatis berganti setiap 5 detik */
 
 function startSlideshow() {
+
     clearInterval(slideTimer);
 
     slideTimer = setInterval(function() {
+
         currentSlide =
             (currentSlide + 1) % slides.length;
 
         showSlide();
+
     }, 5000);
 }
 
 /* Mulai slideshow */
 
-showSlide();
 startSlideshow();
 
 
 /* =====================================
-   EFEK KLIK MENU KHUSUS LAPTOP
+   EFEK MENU KHUSUS LAPTOP SAJA
 ===================================== */
 
-const desktopMenus = document.querySelectorAll(".desktop-menu");
+const isDesktop = window.matchMedia(
+    "(min-width: 701px)"
+).matches;
 
-desktopMenus.forEach(function(menu) {
+if (isDesktop) {
 
-    menu.addEventListener("click", function(event) {
+    const desktopMenus = document.querySelectorAll(
+        ".desktop-menu"
+    );
 
-        event.preventDefault();
+    desktopMenus.forEach(function(menu) {
 
-        const clickedMenu = this;
-        const destination = clickedMenu.href;
+        menu.addEventListener("click", function() {
 
-        // Jika menu yang sama diklik kembali, lepaskan sorotan
-        if (clickedMenu.classList.contains("is-selected")) {
-            clickedMenu.classList.remove("is-selected");
-            return;
-        }
+            const alreadySelected =
+                this.classList.contains("is-selected");
 
-        // Hapus sorotan dari menu sebelumnya
-        desktopMenus.forEach(function(item) {
-            item.classList.remove("is-selected");
+            // Lepaskan semua sorotan sebelumnya
+            desktopMenus.forEach(function(item) {
+                item.classList.remove("is-selected");
+            });
+
+            // Jika belum dipilih, aktifkan sorotan baru
+            if (!alreadySelected) {
+                this.classList.add("is-selected");
+            }
+
+            // Tautan tetap terbuka di tab baru
         });
-
-        // Tampilkan sorotan pada menu yang dipilih
-        clickedMenu.classList.add("is-selected");
-
-        // Buka SharePoint setelah animasi selesai
-        setTimeout(function() {
-            window.location.href = destination;
-        }, 400);
 
     });
 
-});
+}
 
 </script>
 
