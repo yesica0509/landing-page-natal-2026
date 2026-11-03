@@ -20,7 +20,7 @@ html, body {
 }
 
 /* =====================================
-   DESKTOP - TAMPILAN LAPTOP
+   DESKTOP - DESAIN LAPTOP
 ===================================== */
 
 .desktop-page {
@@ -150,7 +150,7 @@ html, body {
 
 
 /* =====================================
-   MOBILE - TAMPILAN HP
+   MOBILE - DESAIN PORTRAIT
 ===================================== */
 
 .mobile-page {
@@ -173,17 +173,16 @@ html, body {
 }
 
 /* =====================================
-   SLIDESHOW MOBILE - UKURAN DIPERKECIL
+   SLIDESHOW MOBILE BARU
+   Menutupi kotak dan bulatan lama
 ===================================== */
 
 .mobile-slideshow {
     position: absolute;
-
-    /* Posisi dan ukuran kotak baru */
     left: 4%;
-    top: 33%;
+    top: 32.5%;
     width: 92%;
-    height: 20%;
+    height: 23.5%;
 
     background: #fffaf6;
     border: 3px solid white;
@@ -193,14 +192,14 @@ html, body {
     z-index: 4;
 }
 
-/* HEADER DOKUMENTASI MOBILE */
+/* HEADER MOBILE */
 
 .mobile-slide-header {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 19%;
+    height: 17%;
 
     padding: 0 15px;
     display: flex;
@@ -218,16 +217,16 @@ html, body {
     font-size: clamp(18px, 4.5vw, 23px);
 }
 
-/* FOTO SLIDESHOW MOBILE */
+/* FOTO MOBILE */
 
 .mobile-slide-photo {
     position: absolute;
     left: 0;
-    top: 19%;
+    top: 17%;
     width: 100%;
-    height: 81%;
-    background: #ddd;
+    height: 83%;
     overflow: hidden;
+    background: #ddd;
 }
 
 .mobile-slide-photo img {
@@ -240,7 +239,7 @@ html, body {
 /* TOMBOL PANAH MOBILE */
 
 .mobile-slideshow .slide-button {
-    top: 59.5%;
+    top: 58.5%;
     transform: translateY(-50%);
     width: 33px;
     height: 33px;
@@ -330,7 +329,7 @@ html, body {
 <body>
 
 <!-- =====================================
-     DESKTOP
+     TAMPILAN DESKTOP
 ===================================== -->
 
 <div class="desktop-page">
@@ -340,6 +339,8 @@ html, body {
         src="Portal%20Natal%20Kementerian%20Keuangan%202026%20(3).png"
         alt="Natal Kementerian Keuangan 2026"
     >
+
+    <!-- SLIDESHOW DESKTOP -->
 
     <div class="desktop-slideshow">
 
@@ -354,15 +355,19 @@ html, body {
             Dokumentasi Kegiatan
         </div>
 
-        <button class="slide-button prev"
+        <button
+            class="slide-button prev"
             onclick="changeSlide(-1)"
-            aria-label="Foto sebelumnya">
+            aria-label="Foto sebelumnya"
+        >
             &#8249;
         </button>
 
-        <button class="slide-button next"
+        <button
+            class="slide-button next"
             onclick="changeSlide(1)"
-            aria-label="Foto berikutnya">
+            aria-label="Foto berikutnya"
+        >
             &#8250;
         </button>
 
@@ -390,7 +395,7 @@ html, body {
 
 
 <!-- =====================================
-     MOBILE
+     TAMPILAN MOBILE
 ===================================== -->
 
 <div class="mobile-page">
@@ -418,15 +423,19 @@ html, body {
             >
         </div>
 
-        <button class="slide-button prev"
+        <button
+            class="slide-button prev"
             onclick="changeSlide(-1)"
-            aria-label="Foto sebelumnya">
+            aria-label="Foto sebelumnya"
+        >
             &#8249;
         </button>
 
-        <button class="slide-button next"
+        <button
+            class="slide-button next"
             onclick="changeSlide(1)"
-            aria-label="Foto berikutnya">
+            aria-label="Foto berikutnya"
+        >
             &#8250;
         </button>
 
@@ -468,8 +477,11 @@ const slides = [
 let currentSlide = 0;
 
 function showSlide() {
-    document.getElementById("desktopSlide").src = slides[currentSlide];
-    document.getElementById("mobileSlide").src = slides[currentSlide];
+    document.getElementById("desktopSlide").src =
+        slides[currentSlide];
+
+    document.getElementById("mobileSlide").src =
+        slides[currentSlide];
 }
 
 function changeSlide(direction) {
