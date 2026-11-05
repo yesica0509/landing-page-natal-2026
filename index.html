@@ -182,8 +182,6 @@ html, body {
         border-color 200ms ease;
 }
 
-/* Muncul saat kursor diarahkan */
-
 @media (hover: hover) and (pointer: fine) {
     .desktop-menu:hover::after {
         opacity: 1;
@@ -196,8 +194,6 @@ html, body {
     }
 }
 
-/* Tetap aktif setelah dipilih */
-
 .desktop-menu.is-selected::after {
     opacity: 1;
     border-color: rgba(255,255,255,0.95);
@@ -207,7 +203,6 @@ html, body {
         0 0 17px rgba(125,190,255,0.5),
         inset 0 0 10px rgba(255,255,255,0.4);
 }
-
 
 /* =====================================
    MOBILE
@@ -321,7 +316,6 @@ html, body {
     right: 9px;
 }
 
-
 /* =====================================
    MENU MOBILE + EFEK KOTAK CAHAYA
 ===================================== */
@@ -335,8 +329,7 @@ html, body {
     -webkit-tap-highlight-color: transparent;
 }
 
-/* Kotak cahaya masuk sedikit ke dalam kartu
-   dan diturunkan 0,5 cm */
+/* Kotak cahaya diturunkan 0,5 cm */
 
 .mobile-menu::after {
     content: "";
@@ -370,7 +363,7 @@ html, body {
         inset 0 0 6px rgba(255,255,255,0.28);
 }
 
-/* Hover untuk perangkat yang memiliki kursor */
+/* Hover untuk perangkat berkursor */
 
 @media (hover: hover) and (pointer: fine) {
     .mobile-menu:hover::after {
@@ -406,7 +399,6 @@ html, body {
     left: 50%;
     top: 71.8%;
 }
-
 
 /* =====================================
    RESPONSIVE OTOMATIS
@@ -610,10 +602,16 @@ html, body {
 
 <script>
 
+/* DAFTAR 7 FOTO SLIDESHOW */
+
 const slides = [
     "Dokumentasi%20Natal/Foto%201.jpeg",
     "Dokumentasi%20Natal/Foto%202.jpeg",
-    "Dokumentasi%20Natal/Foto%203.jpeg"
+    "Dokumentasi%20Natal/Foto%203.jpeg",
+    "Dokumentasi%20Natal/Foto%204.jpeg",
+    "Dokumentasi%20Natal/Foto%205.jpeg",
+    "Dokumentasi%20Natal/Foto%206.jpeg",
+    "Dokumentasi%20Natal/Foto%207.jpeg"
 ];
 
 let currentSlide = 0;
